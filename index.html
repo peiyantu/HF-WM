@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A polished, media-first academic project page template ready for your own paper, code, models, and results.">
+  <title>Research Project Page Template</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="template.css">
+</head>
+<body>
+  <!--
+    EDIT HERE:
+    Replace the visible placeholder text and href="#" links with your content.
+    The layout and styling are all in template.css.
+  -->
+  <main>
+    <header class="hero" id="top">
+      <div class="hero-glow hero-glow-left"></div>
+      <div class="hero-glow hero-glow-right"></div>
+      <div class="hero-inner">
+        <p class="eyebrow"><span class="eyebrow-dot"></span>A clean, media-first project page template</p>
+        <h1>
+          <span>PROJECT</span>
+          <small>Your Full Research Project Title Goes Here</small>
+        </h1>
+
+        <div class="authors" aria-label="Authors">
+          <div class="author-row">
+            <span>First Author<sup>1</sup></span>
+            <span>Second Author<sup>1,2</sup></span>
+            <span>Third Author<sup>2</sup></span>
+          </div>
+          <p><sup>1</sup> Your University&nbsp;&nbsp;·&nbsp;&nbsp;<sup>2</sup> Your Research Lab</p>
+        </div>
+
+        <nav class="resource-links" aria-label="Project resources">
+          <a href="#">Paper <span aria-hidden="true">↗</span></a>
+          <a href="#">Code <span aria-hidden="true">↗</span></a>
+          <a href="#">Model <span aria-hidden="true">↗</span></a>
+          <a href="#">Dataset <span aria-hidden="true">↗</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <nav class="section-nav" aria-label="Page sections">
+      <div>
+        <a class="nav-mark" href="#top" aria-label="Back to top">P</a>
+        <div class="nav-links">
+          <a href="#overview">Overview</a>
+          <a href="#abstract">Abstract</a>
+          <a href="#method">Method</a>
+          <a href="#results">Results</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#bibtex">BibTeX</a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="section overview" id="overview">
+      <div class="section-kicker">Project overview</div>
+      <div class="media-placeholder hero-media" role="img" aria-label="Replace with your teaser figure or video">
+        <div class="media-grid"></div>
+        <div class="media-orbit media-orbit-one"></div>
+        <div class="media-orbit media-orbit-two"></div>
+        <div class="media-core">
+          <span class="media-label">HERO MEDIA</span>
+          <strong>Replace with your teaser figure or video</strong>
+          <span class="media-file">image / video / interactive demo</span>
+        </div>
+      </div>
+      <p class="media-caption">Add a one-sentence caption that lets a visitor understand the project before reading the paper.</p>
+
+      <div class="highlight-grid">
+        <article class="highlight-card">
+          <span>01</span>
+          <p>Your first key contribution in one short line.</p>
+        </article>
+        <article class="highlight-card">
+          <span>02</span>
+          <p>Your strongest quantitative or practical result.</p>
+        </article>
+        <article class="highlight-card">
+          <span>03</span>
+          <p>Why this work matters to the research community.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section prose-section" id="abstract">
+      <div class="section-heading">
+        <p>01 · Context</p>
+        <h2>Abstract</h2>
+      </div>
+      <div class="abstract-layout">
+        <p class="lead">Write a concise overview of your work here. A strong abstract usually introduces the problem, explains the core idea, summarizes the method, and ends with the most important result. Keep this paragraph readable for researchers outside your immediate area.</p>
+        <aside>
+          <span>TL;DR</span>
+          <p>Put the single most memorable claim from your project here. Make it specific, short, and easy to quote.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="method">
+      <div class="section-heading">
+        <p>02 · Approach</p>
+        <h2>Method</h2>
+      </div>
+      <p class="section-intro">Explain the central idea behind your method. Use the large media panel for your system diagram, pipeline, or architecture figure. The three cards below are useful for breaking a complex approach into clear stages.</p>
+      <div class="media-placeholder method-media" role="img" aria-label="Replace with architecture or pipeline diagram">
+        <div class="media-grid"></div>
+        <div class="media-orbit media-orbit-one"></div>
+        <div class="media-orbit media-orbit-two"></div>
+        <div class="media-core">
+          <span class="media-label">METHOD FIGURE</span>
+          <strong>Replace with architecture / pipeline diagram</strong>
+          <span class="media-file">image / video / interactive demo</span>
+        </div>
+      </div>
+
+      <div class="method-grid">
+        <article>
+          <span>01</span>
+          <h3>Input &amp; preparation</h3>
+          <p>Describe the data, observations, prompts, or signals that enter your system.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Core method</h3>
+          <p>Summarize the novel model, algorithm, or design choice that powers the work.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Output &amp; evaluation</h3>
+          <p>Explain what the system produces and how you evaluate its quality.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="results">
+      <div class="section-heading">
+        <p>03 · Evidence</p>
+        <h2>Key results</h2>
+      </div>
+      <p class="section-intro">Lead with the numbers that support your main claim, then use the gallery below for qualitative comparisons and ablations.</p>
+      <div class="result-grid">
+        <article>
+          <div class="result-metric">+00.0%</div>
+          <h3>Primary result</h3>
+          <p>State your headline improvement and the baseline or setting used for comparison.</p>
+        </article>
+        <article>
+          <div class="result-metric">0.00×</div>
+          <h3>Efficiency result</h3>
+          <p>Highlight a speed, data, compute, or parameter-efficiency advantage.</p>
+        </article>
+        <article>
+          <div class="result-metric">00 / 00</div>
+          <h3>Generalization</h3>
+          <p>Show breadth across tasks, datasets, embodiments, environments, or users.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="gallery">
+      <div class="section-heading">
+        <p>04 · Qualitative</p>
+        <h2>Gallery &amp; comparisons</h2>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-wide">
+          <div class="media-placeholder" role="img" aria-label="Main qualitative result">
+            <div class="media-grid"></div>
+            <div class="media-orbit media-orbit-one"></div>
+            <div class="media-orbit media-orbit-two"></div>
+            <div class="media-core">
+              <span class="media-label">DEMO 01</span>
+              <strong>Main qualitative result</strong>
+              <span class="media-file">image / video / interactive demo</span>
+            </div>
+          </div>
+          <figcaption>Describe what the visitor should notice here.</figcaption>
+        </figure>
+        <figure>
+          <div class="media-placeholder" role="img" aria-label="Comparison or ablation">
+            <div class="media-grid"></div>
+            <div class="media-orbit media-orbit-one"></div>
+            <div class="media-orbit media-orbit-two"></div>
+            <div class="media-core">
+              <span class="media-label">DEMO 02</span>
+              <strong>Comparison or ablation</strong>
+              <span class="media-file">image / video / interactive demo</span>
+            </div>
+          </div>
+          <figcaption>Baseline vs. your method.</figcaption>
+        </figure>
+        <figure>
+          <div class="media-placeholder" role="img" aria-label="Additional example">
+            <div class="media-grid"></div>
+            <div class="media-orbit media-orbit-one"></div>
+            <div class="media-orbit media-orbit-two"></div>
+            <div class="media-core">
+              <span class="media-label">DEMO 03</span>
+              <strong>Additional example</strong>
+              <span class="media-file">image / video / interactive demo</span>
+            </div>
+          </div>
+          <figcaption>Generalization example.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="bibtex">
+      <div class="section-heading">
+        <p>05 · Citation</p>
+        <h2>BibTeX</h2>
+      </div>
+      <div class="bibtex-card">
+        <pre id="citation">@article{yourproject2026,
+  title   = {Your Full Research Project Title Goes Here},
+  author  = {Author, First and Author, Second and Author, Third},
+  journal = {Conference or Journal Name},
+  year    = {2026}
+}</pre>
+        <button type="button" id="copy-citation">Copy citation</button>
+      </div>
+    </section>
+
+    <footer>
+      <a href="#top">PROJECT</a>
+      <p>Replace this line with your lab, institution, and contact information.</p>
+      <span>Project page template · 2026</span>
+    </footer>
+  </main>
+
+  <script>
+    const copyButton = document.getElementById("copy-citation");
+    copyButton.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(document.getElementById("citation").textContent);
+      copyButton.textContent = "Copied";
+      window.setTimeout(() => {
+        copyButton.textContent = "Copy citation";
+      }, 1800);
+    });
+  </script>
+</body>
+</html>
