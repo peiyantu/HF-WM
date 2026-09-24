@@ -3,232 +3,898 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Anonymous research project page template.">
-  <title>Anonymous Research Project Page</title>
+  <meta name="description" content="Beyond Successful Robot Demonstrations: Learning from Human Interactions and Modeling Failure Dynamics.">
+  <title>Beyond Successful Robot Demonstrations — HF-WM</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="template.css">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;600;700&family=Inter:wght@400;500;600&family=Lora:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="template.css?v=20260924-origin-crop">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 <body>
-  <!--
-    Anonymous version:
-    Author and external resource information is intentionally omitted.
-    The layout and styling are all in template.css.
-  -->
   <main>
     <header class="hero" id="top">
-      <div class="hero-glow hero-glow-left"></div>
-      <div class="hero-glow hero-glow-right"></div>
       <div class="hero-inner">
-        <p class="eyebrow"><span class="eyebrow-dot"></span>Anonymous project page</p>
-        <h1>
-          <span>PROJECT</span>
-          <small>Your Full Research Project Title Goes Here</small>
-        </h1>
-
+        <h1><span class="hero-mark">HF-WM</span><span class="hero-title">Beyond Successful Robot Demonstrations</span><small>Learning from Human Interactions and Modeling Failure Dynamics</small></h1>
+        <nav class="resource-links" aria-label="Project resources">
+          <a href="#downstream">Downstream tasks <span aria-hidden="true">↓</span></a>
+          <a href="#gallery">Watch the rollouts <span aria-hidden="true">↓</span></a>
+        </nav>
       </div>
     </header>
 
     <nav class="section-nav" aria-label="Page sections">
-      <div>
-        <a class="nav-mark" href="#top" aria-label="Back to top">P</a>
-        <div class="nav-links">
-          <a href="#overview">Overview</a>
-          <a href="#abstract">Abstract</a>
-          <a href="#method">Method</a>
-          <a href="#results">Results</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#bibtex">BibTeX</a>
-        </div>
-      </div>
+      <div><div class="nav-links">
+        <a href="#teaser">Teaser</a><a href="#abstract">Abstract</a><a href="#gallery">Gallery</a><a href="#downstream">Downstream</a><a href="#ablation">Compare</a><a href="#figures">Ablation</a><a href="#grpo-cases">GRPO cases</a><a href="#destutter">Pointflow</a>
+      </div></div>
     </nav>
 
-    <section class="section overview" id="overview">
-      <div class="section-kicker">Project overview</div>
-      <div class="media-placeholder hero-media" role="img" aria-label="Replace with your teaser figure or video">
-        <div class="media-grid"></div>
-        <div class="media-orbit media-orbit-one"></div>
-        <div class="media-orbit media-orbit-two"></div>
-        <div class="media-core">
-          <span class="media-label">HERO MEDIA</span>
-          <strong>Replace with your teaser figure or video</strong>
-          <span class="media-file">image / video / interactive demo</span>
+    <section class="section teaser-section" id="teaser">
+      <figure class="teaser-figure">
+        <img src="figures/teaser-1.png?v=20260923lty" alt="HF-WM teaser: Stage 1 supervised fine-tuning learns an action-conditioned world model from human to robot, and Stage 2 GRPO models failure outcomes without paired video supervision" width="2400" height="1041">
+      </figure>
+      <div class="teaser-highlights" aria-label="Key contributions">
+        <article class="teaser-highlight-card">
+          <h3>Learning from Human Interactions</h3>
+          <p>Stabilized pointflow bridges human and robot interactions.</p>
+        </article>
+        <article class="teaser-highlight-card">
+          <h3>Modeling Failure Dynamics</h3>
+          <p>GRPO learns from failure-inducing actions without paired videos.</p>
+        </article>
+        <article class="teaser-highlight-card">
+          <h3>Real-World Policy Evaluation</h3>
+          <p>Predicted futures closely reflect real-world policy performance.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section prose-section abstract-section" id="abstract">
+      <div class="section-heading"><h2>Abstract</h2></div>
+      <div class="abstract-layout"><p class="lead">Action-conditioned world models offer a promising foundation for generalist robotic intelligence by predicting the consequences of actions. However, existing robotic datasets provide limited coverage of the diverse interaction dynamics required for generalizable world modeling. Large-scale egocentric human videos offer complementary interaction experience, yet the embodiment gap between human hands and robotic manipulators hinders effective cross-embodiment learning. Meanwhile, the predominance of successful demonstrations leaves failure dynamics substantially underrepresented, limiting the ability of world models to anticipate unsuccessful executions. To address these limitations, we introduce <strong>HF-WM</strong>, an action-conditioned world model that combines <strong>H</strong>uman interaction learning with <strong>F</strong>ailure-aware post-training. To bridge the embodiment gap, we develop a dual-branch framework that couples video generation with auxiliary pointflow prediction, using stabilized pointflow as a unified motion representation across human and robot interactions while suppressing egocentric camera motion. To improve failure modeling, we further perform Group Relative Policy Optimization (<strong>GRPO</strong>) post-training on perturbed actions derived from successful demonstrations, guided by action alignment and physics plausibility rewards, enabling the model to learn plausible failure dynamics without paired ground-truth videos. Extensive experiments demonstrate that HF-WM achieves state-of-the-art performance in action-conditioned video generation and exhibits strong utility for policy evaluation in downstream robotic tasks.</p></div>
+    </section>
+
+    <section class="section gallery-section" id="gallery">
+      <div class="section-heading"><h2>01 · Qualitative evidence</h2></div>
+      <p class="section-intro">Each row shows frame-aligned input action skeletons, generated RGB rollouts, and corresponding pointflow visualizations.</p>
+
+      <div class="sync-gallery">
+        <div class="sync-panel">
+          <div class="sync-panel-copy"><span class="sync-summary"><strong id="sync-status">Gallery paused</strong><span aria-hidden="true"> · </span><b id="clip-count">6</b> demos · <b id="sync-duration">—</b> loop</span></div>
+          <div class="sync-actions"><button class="sync-play" type="button" id="play-all"><span aria-hidden="true">▶</span>Play all</button><button class="sync-secondary" type="button" id="reset-all">Reset</button><label class="speed-control"><span>Speed</span><select id="speed-control" aria-label="Playback speed"><option value="0.5">0.5×</option><option value="0.75" selected>0.75×</option><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label></div>
+          <div class="sync-scrubber"><span id="sync-current">00:00</span><input id="sync-range" type="range" min="0" max="1" step="0.01" value="0" aria-label="Synchronized gallery timeline"><span id="sync-total">—</span></div>
+        </div>
+
+        <div class="gallery-grid">
+      <article class="gallery-demo"><div class="gallery-demo-heading"><span class="video-index">01</span><div><span>Robot manipulation</span><strong>Clothes / record 011</strong></div></div><div class="gallery-triptych-labels"><span>Input skeleton</span><span>Generated RGB</span><span>RGB + point flow</span></div><div class="gallery-triptych"><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Clothes record 011 input action skeleton"><source src="videos/gallery/1-skeleton.mp4?v=20260922s" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Clothes record 011 generated RGB"><source src="videos/gallery/1-rgb.mp4" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Clothes record 011 RGB with CoWTracker point flow"><source src="videos/gallery/1-pointflow.mp4?v=20260927h" type="video/mp4"></video></div></div></article>
+      <article class="gallery-demo"><div class="gallery-demo-heading"><span class="video-index">02</span><div><span>Robot manipulation</span><strong>Fruit on plate / record 014</strong></div></div><div class="gallery-triptych-labels"><span>Input skeleton</span><span>Generated RGB</span><span>RGB + point flow</span></div><div class="gallery-triptych"><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Fruit on plate record 014 input action skeleton"><source src="videos/gallery/2-skeleton.mp4?v=20260922s" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Fruit on plate record 014 generated RGB"><source src="videos/gallery/2-rgb.mp4" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Fruit on plate record 014 RGB with CoWTracker point flow"><source src="videos/gallery/2-pointflow.mp4?v=20260927h" type="video/mp4"></video></div></div></article>
+      <article class="gallery-demo"><div class="gallery-demo-heading"><span class="video-index">03</span><div><span>Robot manipulation</span><strong>White cloth / DROID 07561</strong></div></div><div class="gallery-triptych-labels"><span>Input skeleton</span><span>Generated RGB</span><span>RGB + point flow</span></div><div class="gallery-triptych"><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="White cloth DROID 07561 input action skeleton"><source src="videos/gallery/3-skeleton.mp4?v=20260923droid07561" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="White cloth DROID 07561 generated RGB"><source src="videos/gallery/3-rgb.mp4" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="White cloth DROID 07561 RGB with CoWTracker point flow"><source src="videos/gallery/3-pointflow.mp4?v=20260927h" type="video/mp4"></video></div></div></article>
+      <article class="gallery-demo"><div class="gallery-demo-heading"><span class="video-index">04</span><div><span>Robot manipulation</span><strong>Lab tabletop / colorful blocks · DROID 03536</strong></div></div><div class="gallery-triptych-labels"><span>Input skeleton</span><span>Generated RGB</span><span>RGB + point flow</span></div><div class="gallery-triptych"><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Lab tabletop colorful blocks DROID 03536 input action skeleton"><source src="videos/gallery/4-skeleton.mp4?v=20260923droid03536" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Lab tabletop colorful blocks DROID 03536 generated RGB"><source src="videos/gallery/4-rgb.mp4" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Lab tabletop colorful blocks DROID 03536 RGB with CoWTracker point flow"><source src="videos/gallery/4-pointflow.mp4?v=20260927h" type="video/mp4"></video></div></div></article>
+      <article class="gallery-demo"><div class="gallery-demo-heading"><span class="video-index">05</span><div><span>Robot manipulation</span><strong>Open drawer / DROID 00025</strong></div></div><div class="gallery-triptych-labels"><span>Input skeleton</span><span>Generated RGB</span><span>RGB + point flow</span></div><div class="gallery-triptych"><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Open drawer DROID 00025 input action skeleton"><source src="videos/gallery/5-skeleton.mp4?v=20260923first81" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Open drawer DROID 00025 generated RGB"><source src="videos/gallery/5-rgb.mp4" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Open drawer DROID 00025 RGB with CoWTracker point flow"><source src="videos/gallery/5-pointflow.mp4?v=20260927h" type="video/mp4"></video></div></div></article>
+      <article class="gallery-demo"><div class="gallery-demo-heading"><span class="video-index">06</span><div><span>Robot manipulation</span><strong>Yellow cube / DROID 00051</strong></div></div><div class="gallery-triptych-labels"><span>Input skeleton</span><span>Generated RGB</span><span>RGB + point flow</span></div><div class="gallery-triptych"><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Yellow cube DROID 00051 input action skeleton"><source src="videos/gallery/6-skeleton.mp4?v=20260923uniform81b" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Yellow cube DROID 00051 generated RGB"><source src="videos/gallery/6-rgb.mp4?v=20260923same-pointflow-rgb" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Yellow cube DROID 00051 RGB with CoWTracker point flow"><source src="videos/gallery/6-pointflow.mp4?v=20260927h" type="video/mp4"></video></div></div></article>
+        </div>
+        <p class="gallery-note">All 18 clips share one playhead. The shortest clip defines the loop so every view stays aligned.</p>
+      </div>
+    </section>
+
+    <section class="section downstream-section" id="downstream">
+      <div class="section-heading"><h2>02 · Downstream validation</h2></div>
+      <div class="downstream-part" id="policy-evaluation">
+        <h3 class="downstream-part-title">A · Policy Evaluation</h3>
+      <article class="downstream-switcher" data-model-switcher>
+        <div class="model-tabs" role="tablist" aria-label="Wooden block policy model selector">
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="π₀-flow" data-video-src="videos/downstream/1-1.mp4">π₀-flow</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-FAST" data-video-src="videos/downstream/1-2.mp4">PG-FAST</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-FAST+" data-video-src="videos/downstream/1-3.mp4">PG-FAST+</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-FSQ" data-video-src="videos/downstream/1-4.mp4">PG-FSQ</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-flow" data-video-src="videos/downstream/1-5.mp4">PG-flow</button>
+          <button class="model-tab is-active" type="button" role="tab" aria-selected="true" data-model-name="π₀-FAST" data-video-src="videos/downstream/1-6.mp4">π₀-FAST</button>
+        </div>
+        <div class="model-stage">
+          <div class="model-stage-header"><div><h3 data-model-title>π₀-flow</h3><p>Uncover the wooden block.</p></div><label class="model-speed-control"><span>Speed</span><select data-model-speed aria-label="Playback speed"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option><option value="3" selected>3×</option></select></label></div>
+          <div class="downstream-switch-video-shell"><video class="downstream-switch-video" controls playsinline preload="metadata" aria-label="π₀-flow real and HF-WM comparison"><source src="videos/downstream/1-1.mp4" type="video/mp4"></video></div>
+        </div>
+      </article>
+
+      <article class="downstream-switcher" data-model-switcher>
+        <div class="model-tabs" role="tablist" aria-label="Juice pour policy model selector">
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="π₀-flow" data-video-src="videos/downstream/2-1.mp4">π₀-flow</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-FAST" data-video-src="videos/downstream/2-2.mp4">PG-FAST</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-FAST+" data-video-src="videos/downstream/2-3.mp4">PG-FAST+</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-FSQ" data-video-src="videos/downstream/2-4.mp4">PG-FSQ</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-flow" data-video-src="videos/downstream/2-5.mp4">PG-flow</button>
+          <button class="model-tab is-active" type="button" role="tab" aria-selected="true" data-model-name="π₀-FAST" data-video-src="videos/downstream/2-6.mp4">π₀-FAST</button>
+        </div>
+        <div class="model-stage">
+          <div class="model-stage-header"><div><h3 data-model-title>π₀-flow</h3><p>Pour some juice in the white cup. Then keep the juice bottle back.</p></div><label class="model-speed-control"><span>Speed</span><select data-model-speed aria-label="Playback speed"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option><option value="3" selected>3×</option></select></label></div>
+          <div class="downstream-switch-video-shell"><video class="downstream-switch-video" controls playsinline preload="metadata" aria-label="π₀-flow real and HF-WM comparison"><source src="videos/downstream/2-1.mp4" type="video/mp4"></video></div>
+        </div>
+      </article>
+
+      <article class="downstream-switcher" data-model-switcher data-extra-rollouts>
+        <div class="model-tabs" role="tablist" aria-label="Extra RoboArena rollout selector">
+          <button class="model-tab is-active" type="button" role="tab" aria-selected="true" data-model-name="Overview" data-model-instruction="" data-view="chart">Overview</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="Case 1" data-model-instruction="Place the square on the plate." data-view="video" data-video-src="videos/downstream/3-1.mp4">Case 1</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="Case 2" data-model-instruction="Put the green cube in the pink bowl." data-view="video" data-video-src="videos/downstream/3-2.mp4">Case 2</button>
+        </div>
+        <div class="model-stage downstream-extra-stage is-chart">
+          <div class="model-stage-header"><div><span class="downstream-kicker">Extra RoboArena rollouts</span><h3 data-model-title>Overview</h3><p data-model-instruction></p></div><label class="model-speed-control is-hidden"><span>Speed</span><select data-model-speed aria-label="Playback speed"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label></div>
+          <div class="downstream-extra-panel">
+            <figure class="downstream-extra-figure"><img src="figures/downstream-1.png" alt="RoboArena downstream success-rate comparison across policies" loading="lazy"></figure>
+            <div class="downstream-metric-stack" aria-label="Policy-rate agreement metrics">
+              <article class="downstream-metric-card">
+                <span>Pearson <i>r</i></span>
+                <strong>0.983</strong>
+                <small>policy-rate correlation</small>
+              </article>
+              <article class="downstream-metric-card">
+                <span>Spearman <i>ρ</i></span>
+                <strong>0.956</strong>
+                <small>rank correlation</small>
+              </article>
+              <article class="downstream-metric-card">
+                <span>Kendall <i>τ</i></span>
+                <strong>0.929</strong>
+                <small>pairwise order</small>
+              </article>
+              <article class="downstream-metric-card">
+                <span>SISR<sub>Δ</sub></span>
+                <strong>2.4 pp</strong>
+                <small>mean |rate error|</small>
+              </article>
+            </div>
+          </div>
+          <div class="downstream-switch-video-shell"><video class="downstream-switch-video" controls playsinline preload="metadata" aria-label="Extra RoboArena rollout"><source src="videos/downstream/3-1.mp4" type="video/mp4"></video></div>
+        </div>
+      </article>
+      </div>
+      <div class="ttc-block downstream-part" id="ttc-comparisons">
+        <h3 class="downstream-part-title">B · Test-Time Scaling for Policy Inference</h3>
+        <figure class="ttc-overview-figure">
+          <img src="figures/downstream-2.png?v=20260922ttc" alt="TTC routing overview: HF-WM generates candidate actions, Robometer evaluates them, and the selected action is executed; the right panel compares HF-WM TTS with the pi0.5 baseline" width="5646" height="1772">
+        </figure>
+        <div class="ttc-grid">
+          <figure class="ttc-card">
+            <figcaption><div class="ttc-card-title"><span>Task 1</span></div><small>Before: 143 steps · After: 70 steps</small></figcaption>
+            <div class="ttc-video-shell">
+              <video class="ttc-video" controls playsinline preload="metadata" poster="videos/downstream/ttc-1-poster.png" aria-label="LIBERO-90 task 28 comparison: close the top drawer"><source src="videos/downstream/ttc-1.mp4" type="video/mp4"></video>
+              <div class="ttc-video-overlay" aria-hidden="true"><div class="ttc-video-labels"><span>Before TTC</span><span>AFTER TTC</span></div></div>
+            </div>
+          </figure>
+          <figure class="ttc-card">
+            <figcaption><div class="ttc-card-title"><span>Task 2</span></div><small>Before: 373 steps · After: 240 steps</small></figcaption>
+            <div class="ttc-video-shell">
+              <video class="ttc-video" controls playsinline preload="metadata" poster="videos/downstream/ttc-2-poster.png" aria-label="LIBERO-90 task 2 comparison: put the black bowl in the top drawer"><source src="videos/downstream/ttc-2.mp4" type="video/mp4"></video>
+              <div class="ttc-video-overlay" aria-hidden="true"><div class="ttc-video-labels"><span>Before TTC</span><span>AFTER TTC</span></div></div>
+            </div>
+          </figure>
         </div>
       </div>
-      <p class="media-caption">Add a one-sentence caption that lets a visitor understand the project before reading the paper.</p>
-
-      <div class="highlight-grid">
-        <article class="highlight-card">
-          <span>01</span>
-          <p>Your first key contribution in one short line.</p>
-        </article>
-        <article class="highlight-card">
-          <span>02</span>
-          <p>Your strongest quantitative or practical result.</p>
-        </article>
-        <article class="highlight-card">
-          <span>03</span>
-          <p>Why this work matters to the research community.</p>
-        </article>
-      </div>
     </section>
 
-    <section class="section prose-section" id="abstract">
-      <div class="section-heading">
-        <p>01 · Context</p>
-        <h2>Abstract</h2>
-      </div>
-      <div class="abstract-layout">
-        <p class="lead">Write a concise overview of your work here. A strong abstract usually introduces the problem, explains the core idea, summarizes the method, and ends with the most important result. Keep this paragraph readable for researchers outside your immediate area.</p>
-        <aside>
-          <span>TL;DR</span>
-          <p>Put the single most memorable claim from your project here. Make it specific, short, and easy to quote.</p>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section" id="method">
-      <div class="section-heading">
-        <p>02 · Approach</p>
-        <h2>Method</h2>
-      </div>
-      <p class="section-intro">Explain the central idea behind your method. Use the large media panel for your system diagram, pipeline, or architecture figure. The three cards below are useful for breaking a complex approach into clear stages.</p>
-      <div class="media-placeholder method-media" role="img" aria-label="Replace with architecture or pipeline diagram">
-        <div class="media-grid"></div>
-        <div class="media-orbit media-orbit-one"></div>
-        <div class="media-orbit media-orbit-two"></div>
-        <div class="media-core">
-          <span class="media-label">METHOD FIGURE</span>
-          <strong>Replace with architecture / pipeline diagram</strong>
-          <span class="media-file">image / video / interactive demo</span>
+    <section class="section ablation-section" id="ablation">
+      <div class="section-heading"><h2>03 · Compare</h2></div>
+      <article class="downstream-switcher ablation-switcher" data-cosmos-switcher>
+        <div class="model-tabs" role="tablist" aria-label="Success case selector">
+          <button class="model-tab is-active" type="button" role="tab" aria-selected="true" data-case-name="Success Case 1" data-slot-order="gt,hfwm,oscar,cosmos3,cosmos25,tesseract,kinema4d,ctrlworld" data-video-gt="videos/compare/success-1-gt.mp4?v=20260923f80" data-video-oscar="videos/compare/success-1-oscar.mp4?v=20260923f80" data-video-cosmos25="videos/compare/success-1-cosmos25.mp4?v=20260923f80" data-video-cosmos3="videos/compare/success-1-cosmos3.mp4?v=20260923f80" data-video-tesseract="videos/compare/success-1-tesseract.mp4?v=20260923f80" data-video-kinema4d="videos/compare/success-1-kinema4d.mp4?v=20260923f80" data-video-ctrlworld="videos/compare/success-1-ctrlworld.mp4?v=20260923f80" data-video-hfwm="videos/compare/success-1-hfwm.mp4?v=20260923f80">Case 1</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-case-name="Success Case 2" data-slot-order="gt,hfwm,oscar,cosmos3,cosmos25,tesseract,kinema4d,ctrlworld" data-video-gt="videos/compare/success-2-gt.mp4?v=20260923f80" data-video-oscar="videos/compare/success-2-oscar.mp4?v=20260923f80" data-video-cosmos25="videos/compare/success-2-cosmos25.mp4?v=20260923f80" data-video-cosmos3="videos/compare/success-2-cosmos3.mp4?v=20260923f80" data-video-tesseract="videos/compare/success-2-tesseract.mp4?v=20260923f80" data-video-kinema4d="videos/compare/success-2-kinema4d.mp4?v=20260923f80" data-video-ctrlworld="videos/compare/success-2-ctrlworld.mp4?v=20260923f80" data-video-hfwm="videos/compare/success-2-hfwm.mp4?v=20260923f80">Case 2</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-case-name="Success Case 3" data-slot-order="gt,hfwm,oscar,ctrlworld,cosmos25,cosmos3,tesseract,kinema4d" data-video-gt="videos/compare/success-3-gt.mp4?v=20260923f80" data-video-oscar="videos/compare/success-3-oscar.mp4?v=20260923f80" data-video-cosmos25="videos/compare/success-3-cosmos25.mp4?v=20260923f80" data-video-cosmos3="videos/compare/success-3-cosmos3.mp4?v=20260923f80" data-video-tesseract="videos/compare/success-3-tesseract.mp4?v=20260923f80" data-video-kinema4d="videos/compare/success-3-kinema4d.mp4?v=20260923f80" data-video-ctrlworld="videos/compare/success-3-ctrlworld.mp4?v=20260923f80" data-video-hfwm="videos/compare/success-3-hfwm.mp4?v=20260923f80">Case 3</button>
         </div>
-      </div>
+        <div class="model-stage">
+          <div class="model-stage-header"><h3 class="ablation-case-title" data-model-title>Success Case 1</h3></div>
+          <div class="ablation-controls"><button class="sync-play" type="button" data-ablation-play><span aria-hidden="true">▶</span>Play</button><button class="sync-secondary" type="button" data-ablation-reset>Reset</button></div>
+          <div class="ablation-compare-grid">
+            <figure class="ablation-card" data-cosmos-slot="gt"><figcaption><span>GT</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="GT"><source src="videos/compare/success-1-gt.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="hfwm"><figcaption><span>HF-WM</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="HF-WM"><source src="videos/compare/success-1-hfwm.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="oscar"><figcaption><span>OSCAR</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="OSCAR"><source src="videos/compare/success-1-oscar.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="cosmos3"><figcaption><span>cosmos3</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="cosmos3"><source src="videos/compare/success-1-cosmos3.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="cosmos25"><figcaption><span>Cosmos-Predict2.5</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="Cosmos-Predict2.5"><source src="videos/compare/success-1-cosmos25.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="tesseract"><figcaption><span>Tesseract</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="Tesseract"><source src="videos/compare/success-1-tesseract.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="kinema4d"><figcaption><span>Kinema4D</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="Kinema4D"><source src="videos/compare/success-1-kinema4d.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="ctrlworld"><figcaption><span>Ctrl-World</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="Ctrl-World"><source src="videos/compare/success-1-ctrlworld.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+          </div>
+        </div>
+      </article>
 
-      <div class="method-grid">
-        <article>
-          <span>01</span>
-          <h3>Input &amp; preparation</h3>
-          <p>Describe the data, observations, prompts, or signals that enter your system.</p>
-        </article>
-        <article>
-          <span>02</span>
-          <h3>Core method</h3>
-          <p>Summarize the novel model, algorithm, or design choice that powers the work.</p>
-        </article>
-        <article>
-          <span>03</span>
-          <h3>Output &amp; evaluation</h3>
-          <p>Explain what the system produces and how you evaluate its quality.</p>
-        </article>
-      </div>
+      <article class="downstream-switcher ablation-switcher" data-cosmos-switcher>
+        <div class="model-tabs" role="tablist" aria-label="Failure case selector">
+          <button class="model-tab is-active" type="button" role="tab" aria-selected="true" data-case-name="Failure Case 1" data-slot-order="gt,hfwm,oscar,ctrlworld,cosmos3,cosmos25,tesseract,kinema4d" data-video-gt="videos/compare/failure-1-gt.mp4?v=20260923stretch" data-video-oscar="videos/compare/failure-1-oscar.mp4?v=20260923stretch" data-video-cosmos25="videos/compare/failure-1-cosmos25.mp4?v=20260923stretch" data-video-cosmos3="videos/compare/failure-1-cosmos3.mp4?v=20260923stretch" data-video-tesseract="videos/compare/failure-1-tesseract.mp4?v=20260923stretch" data-video-kinema4d="videos/compare/failure-1-kinema4d.mp4?v=20260923stretch" data-video-ctrlworld="videos/compare/failure-1-ctrlworld.mp4?v=20260923stretch" data-video-hfwm="videos/compare/failure-1-hfwm.mp4?v=20260924sft50">Case 1</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-case-name="Failure Case 2" data-slot-order="gt,hfwm,oscar,ctrlworld,cosmos3,cosmos25,tesseract,kinema4d" data-video-gt="videos/compare/failure-2-gt.mp4?v=20260923stretch" data-video-oscar="videos/compare/failure-2-oscar.mp4?v=20260923stretch" data-video-cosmos25="videos/compare/failure-2-cosmos25.mp4?v=20260923stretch" data-video-cosmos3="videos/compare/failure-2-cosmos3.mp4?v=20260923stretch" data-video-tesseract="videos/compare/failure-2-tesseract.mp4?v=20260923stretch" data-video-kinema4d="videos/compare/failure-2-kinema4d.mp4?v=20260923stretch" data-video-ctrlworld="videos/compare/failure-2-ctrlworld.mp4?v=20260923stretch" data-video-hfwm="videos/compare/failure-2-hfwm.mp4?v=20260923stretch">Case 2</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-case-name="Failure Case 3" data-slot-order="gt,hfwm,oscar,ctrlworld,cosmos3,cosmos25,tesseract,kinema4d" data-video-gt="videos/compare/failure-3-gt.mp4?v=20260923n" data-video-oscar="videos/compare/failure-3-oscar.mp4?v=20260923n" data-video-cosmos25="videos/compare/failure-3-cosmos25.mp4?v=20260923n" data-video-cosmos3="videos/compare/failure-3-cosmos3.mp4?v=20260923blocks" data-video-tesseract="videos/compare/failure-3-tesseract.mp4?v=20260923n" data-video-kinema4d="videos/compare/failure-3-kinema4d.mp4?v=20260923n" data-video-ctrlworld="videos/compare/failure-3-ctrlworld.mp4?v=20260923n" data-video-hfwm="videos/compare/failure-3-hfwm.mp4?v=20260923phys8">Case 3</button>
+        </div>
+        <div class="model-stage">
+          <div class="model-stage-header"><h3 class="ablation-case-title" data-model-title>Failure Case 1</h3></div>
+          <div class="ablation-controls"><button class="sync-play" type="button" data-ablation-play><span aria-hidden="true">▶</span>Play</button><button class="sync-secondary" type="button" data-ablation-reset>Reset</button></div>
+          <div class="ablation-compare-grid">
+            <figure class="ablation-card" data-cosmos-slot="gt"><figcaption><span>GT</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="GT"><source src="videos/compare/failure-1-gt.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="hfwm"><figcaption><span>HF-WM</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="HF-WM"><source src="videos/compare/failure-1-hfwm.mp4?v=20260924sft50" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="oscar"><figcaption><span>OSCAR</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="OSCAR"><source src="videos/compare/failure-1-oscar.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="ctrlworld"><figcaption><span>Ctrl-World</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="Ctrl-World"><source src="videos/compare/failure-1-ctrlworld.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="cosmos3"><figcaption><span>cosmos3</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="cosmos3"><source src="videos/compare/failure-1-cosmos3.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="cosmos25"><figcaption><span>Cosmos-Predict2.5</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="Cosmos-Predict2.5"><source src="videos/compare/failure-1-cosmos25.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="tesseract"><figcaption><span>Tesseract</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="Tesseract"><source src="videos/compare/failure-1-tesseract.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="kinema4d"><figcaption><span>Kinema4D</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="Kinema4D"><source src="videos/compare/failure-1-kinema4d.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+          </div>
+        </div>
+      </article>
     </section>
 
-    <section class="section" id="results">
-      <div class="section-heading">
-        <p>03 · Evidence</p>
-        <h2>Key results</h2>
-      </div>
-      <p class="section-intro">Lead with the numbers that support your main claim, then use the gallery below for qualitative comparisons and ablations.</p>
-      <div class="result-grid">
-        <article>
-          <div class="result-metric">+00.0%</div>
-          <h3>Primary result</h3>
-          <p>State your headline improvement and the baseline or setting used for comparison.</p>
-        </article>
-        <article>
-          <div class="result-metric">0.00×</div>
-          <h3>Efficiency result</h3>
-          <p>Highlight a speed, data, compute, or parameter-efficiency advantage.</p>
-        </article>
-        <article>
-          <div class="result-metric">00 / 00</div>
-          <h3>Generalization</h3>
-          <p>Show breadth across tasks, datasets, embodiments, environments, or users.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="gallery">
-      <div class="section-heading">
-        <p>04 · Qualitative</p>
-        <h2>Gallery &amp; comparisons</h2>
-      </div>
-      <div class="gallery-grid">
-        <figure class="gallery-wide">
-          <div class="media-placeholder" role="img" aria-label="Main qualitative result">
-            <div class="media-grid"></div>
-            <div class="media-orbit media-orbit-one"></div>
-            <div class="media-orbit media-orbit-two"></div>
-            <div class="media-core">
-              <span class="media-label">DEMO 01</span>
-              <strong>Main qualitative result</strong>
-              <span class="media-file">image / video / interactive demo</span>
+    <section class="section figures-section component-ablation-section" id="figures">
+      <div class="section-heading"><h2>03 · Ablation</h2></div>
+      <article class="downstream-switcher ablation-switcher" data-component-ablation>
+        <div class="model-tabs" role="tablist" aria-label="Component ablation selector">
+          <button class="model-tab is-active" type="button" role="tab" aria-selected="true" data-case-name="w/o human data" data-with-label="with human data" data-without-label="w/o human data" data-note-kicker="Human data" data-note-title="Improves generalization" data-note-body="Human interactions add diverse contact dynamics that transfer to robot-centric prediction." data-video-gt="videos/ablation/1-gt.mp4?v=20260924droid16" data-video-with="videos/ablation/1-with.mp4?v=20260924droid16" data-video-without="videos/ablation/1-without.mp4?v=20260924droid16">w/o human data</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-case-name="w/o pointflow" data-with-label="with pointflow" data-without-label="w/o pointflow" data-note-kicker="Pointflow" data-note-title="Stabilizes the background, focuses on motion" data-note-body="Stabilized pointflow suppresses camera shake so the model attends to object and gripper motion." data-video-gt="videos/ablation/2-gt.mp4?v=20260923gt17273" data-video-with="videos/ablation/2-with.mp4?v=20260923ab2" data-video-without="videos/ablation/2-without.mp4?v=20260923ab2">w/o pointflow</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-case-name="w/o GRPO" data-with-label="with GRPO" data-without-label="w/o GRPO" data-note-kicker="GRPO" data-note-title="Failure-aware post-training" data-note-body="GRPO teaches plausible failure dynamics from perturbed actions without paired ground-truth videos." data-video-gt="videos/ablation/3-gt.mp4?v=20260923ab2" data-video-with="videos/ablation/3-with.mp4?v=20260924cube" data-video-without="videos/ablation/3-without.mp4?v=20260923ab2">w/o GRPO</button>
+        </div>
+        <div class="model-stage">
+          <div class="model-stage-header"><h3 class="ablation-case-title" data-model-title>w/o human data</h3></div>
+          <div class="ablation-controls"><button class="sync-play" type="button" data-ablation-play><span aria-hidden="true">▶</span>Play</button><button class="sync-secondary" type="button" data-ablation-reset>Reset</button></div>
+          <div class="component-ablation-layout">
+            <div class="component-ablation-gt-row">
+              <figure class="ablation-card" data-ab-slot="gt"><figcaption><span>GT</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="GT"><source src="videos/ablation/1-gt.mp4?v=20260924droid16" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+              <aside class="component-ablation-note">
+                <span data-ab-note-kicker>Human data</span>
+                <h4 data-ab-note-title>Improves generalization</h4>
+                <p data-ab-note-body>Human interactions add diverse contact dynamics that transfer to robot-centric prediction.</p>
+              </aside>
+            </div>
+            <div class="component-ablation-pair">
+              <figure class="ablation-card" data-ab-slot="with"><figcaption><span data-ab-with-label>with human data</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="with human data"><source src="videos/ablation/1-with.mp4?v=20260924droid16" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+              <figure class="ablation-card" data-ab-slot="without"><figcaption><span data-ab-without-label>w/o human data</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="w/o human data"><source src="videos/ablation/1-without.mp4?v=20260924droid16" type="video/mp4"></video><svg class="sheep-box" viewBox="0 0 832 464" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect x="442" y="76" width="61" height="82" fill="none" stroke="#ef2020" stroke-width="4"></rect></svg><div class="ablation-placeholder" hidden></div></div></figure>
             </div>
           </div>
-          <figcaption>Describe what the visitor should notice here.</figcaption>
-        </figure>
-        <figure>
-          <div class="media-placeholder" role="img" aria-label="Comparison or ablation">
-            <div class="media-grid"></div>
-            <div class="media-orbit media-orbit-one"></div>
-            <div class="media-orbit media-orbit-two"></div>
-            <div class="media-core">
-              <span class="media-label">DEMO 02</span>
-              <strong>Comparison or ablation</strong>
-              <span class="media-file">image / video / interactive demo</span>
-            </div>
+        </div>
+      </article>
+      <article class="grpo-cases-block" id="grpo-cases">
+        <div class="grpo-cases-heading">
+          <div>
+            <span class="grpo-kicker">Failure-aware post-training</span>
+            <h3>GRPO cases</h3>
+            <p>Counterfactual actions expose failure dynamics; GRPO keeps the rollout that remains physically plausible.</p>
           </div>
-          <figcaption>Baseline vs. your method.</figcaption>
-        </figure>
-        <figure>
-          <div class="media-placeholder" role="img" aria-label="Additional example">
-            <div class="media-grid"></div>
-            <div class="media-orbit media-orbit-one"></div>
-            <div class="media-orbit media-orbit-two"></div>
-            <div class="media-core">
-              <span class="media-label">DEMO 03</span>
-              <strong>Additional example</strong>
-              <span class="media-file">image / video / interactive demo</span>
+        </div>
+        <div class="model-tabs grpo-case-tabs" role="tablist" aria-label="GRPO case selector">
+          <button class="model-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="grpo-case-1" data-grpo-case="case1">Case 1 · Perturbed action</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" aria-controls="grpo-case-2" data-grpo-case="case2">Case 2 · No perturbation</button>
+        </div>
+        <div class="grpo-case-stage">
+          <section class="grpo-case-panel is-active" id="grpo-case-1" data-grpo-panel="case1" role="tabpanel">
+            <div class="grpo-case-copy">
+              <div>
+                <span class="grpo-panel-kicker">Case 1 · failure-inducing action</span>
+                <h4>Before GRPO, the perturbed action breaks the physical outcome</h4>
+                <p>The original video is shown on the left; the perturbed action before GRPO is shown on the right. The rollout below shows GRPO selecting a physically plausible candidate.</p>
+              </div>
             </div>
-          </div>
-          <figcaption>Generalization example.</figcaption>
-        </figure>
-      </div>
+            <div class="grpo-pair-labels" aria-hidden="true"><span><i class="grpo-swatch grpo-swatch-good"></i>Initial video · origin reference</span><span><i class="grpo-swatch grpo-swatch-bad"></i>Before GRPO · perturbed action</span></div>
+            <div class="grpo-pair">
+              <figure class="grpo-half-card"><div class="grpo-half-shell" data-grpo-half="right"><video class="grpo-pair-video" muted playsinline preload="metadata" aria-label="Case 1 initial origin reference video"><source src="videos/grpo/1-pair.mp4" type="video/mp4"></video></div></figure>
+              <figure class="grpo-half-card"><div class="grpo-half-shell" data-grpo-half="left"><video class="grpo-pair-video" muted playsinline preload="metadata" aria-label="Case 1 perturbed action before GRPO"><source src="videos/grpo/1-pair.mp4" type="video/mp4"></video></div></figure>
+            </div>
+            <div class="grpo-process-heading"><div><span>GRPO process</span></div><div class="grpo-process-key"><i class="grpo-swatch grpo-swatch-selected"></i>selected <i class="grpo-swatch grpo-swatch-rejected"></i>rejected</div></div>
+            <div class="grpo-process-card">
+              <div class="grpo-process-viewport grpo-process-viewport--case1"><video class="grpo-process-video" muted playsinline preload="metadata" aria-label="Case 1 GRPO candidate selection"><source src="videos/grpo/1-process.mp4" type="video/mp4"></video></div>
+              <div class="grpo-controls"><button class="sync-play" type="button" data-grpo-play="case1"><span aria-hidden="true">▶</span>Play case 1</button><button class="sync-secondary" type="button" data-grpo-reset="case1">Reset</button></div>
+            </div>
+          </section>
+          <section class="grpo-case-panel" id="grpo-case-2" data-grpo-panel="case2" role="tabpanel" hidden>
+            <div class="grpo-case-copy">
+              <div>
+                <span class="grpo-panel-kicker">Origin</span>
+                <h4>No perturbation</h4>
+                <p>This control case keeps the original action unchanged.</p>
+              </div>
+              <span class="grpo-legend"><i class="grpo-swatch grpo-swatch-selected"></i>selected candidate <i class="grpo-swatch grpo-swatch-rejected"></i>other candidates</span>
+            </div>
+            <div class="grpo-origin-label"><i class="grpo-swatch grpo-swatch-good"></i><span>Origin</span></div>
+            <figure class="grpo-origin-card"><div class="grpo-origin-viewport"><video class="grpo-origin-video" muted playsinline preload="metadata" aria-label="Case 2 origin video"><source src="videos/grpo/2-origin.mp4?v=20260924crop" type="video/mp4"></video></div></figure>
+            <div class="grpo-process-heading"><div><span>GRPO candidate process · no perturbation</span></div></div>
+            <div class="grpo-process-card">
+              <div class="grpo-process-viewport grpo-process-viewport--case2"><video class="grpo-process-video" muted playsinline preload="metadata" aria-label="Case 2 GRPO candidate selection without perturbation"><source src="videos/grpo/2-process.mp4" type="video/mp4"></video></div>
+              <div class="grpo-controls"><button class="sync-play" type="button" data-grpo-play="case2"><span aria-hidden="true">▶</span>Play case 2</button><button class="sync-secondary" type="button" data-grpo-reset="case2">Reset</button></div>
+            </div>
+          </section>
+        </div>
+      </article>
     </section>
 
-    <section class="section" id="bibtex">
-      <div class="section-heading">
-        <p>05 · Citation</p>
-        <h2>BibTeX</h2>
-      </div>
-      <div class="bibtex-card">
-        <pre id="citation">@article{yourproject2026,
-  title   = {Your Full Research Project Title Goes Here},
-  author  = {Anonymous},
-  journal = {Conference or Journal Name},
-  year    = {2026}
-}</pre>
-        <button type="button" id="copy-citation">Copy citation</button>
-      </div>
+
+    <section class="section destutter-section" id="destutter">
+      <div class="section-heading"><h2>03 · Stabilized pointflow</h2></div>
+      <figure class="paper-figure paper-figure-wide destutter-figure"><img src="figures/destutter-1.png" alt="HF-WM Figure 2: camera-compensated 3D point trajectories on the left, and the dual-branch multimodal attention architecture on the right" loading="lazy"><figcaption><span>Figure 2</span><strong>Stabilized point flow and multimodal attention.</strong><p>Left: camera-compensated 3D pointflow tracks object and gripper motion. Right: multimodal attention fuses vision, language, skeleton, action, and point-flow tokens for unified human–robot modeling.</p></figcaption></figure>
+      <article class="destutter-switcher" data-destutter>
+        <div class="model-tabs" role="tablist" aria-label="Pointflow destutter case selector">
+          <button class="model-tab is-active" type="button" role="tab" aria-selected="true" data-case-name="Case 1" data-metric="5.31 → 1.04 pixels / frame (−80%)" data-before-src="videos/destutter/1-before.mp4" data-after-src="videos/destutter/1-after.mp4" data-before-poster="videos/destutter/1-before.jpg" data-after-poster="videos/destutter/1-after.jpg">Case 1</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-case-name="Case 2" data-metric="4.06 → 0.72 pixels / frame (−82%)" data-before-src="videos/destutter/2-before.mp4" data-after-src="videos/destutter/2-after.mp4" data-before-poster="videos/destutter/2-before.jpg" data-after-poster="videos/destutter/2-after.jpg">Case 2</button>
+        </div>
+        <div class="destutter-stage">
+          <div class="destutter-stage-header">
+            <div class="destutter-metric">
+              <span>Background jitter</span>
+              <b data-destutter-metric>5.31 → 1.04 pixels / frame (−80%)</b>
+              <small>How far still background points jump each frame, in image pixels (px). Lower means less camera shake in the tracks.</small>
+            </div>
+            <div class="destutter-controls">
+              <button class="sync-play" type="button" data-destutter-play><span aria-hidden="true">▶</span>Play</button>
+            </div>
+          </div>
+          <div class="destutter-pair-labels"><span>Before · raw current-camera</span><span>After · frame-0 camera compensation</span></div>
+          <div class="destutter-pair">
+            <div class="video-shell"><video class="destutter-video" data-destutter-before muted playsinline loop preload="metadata" poster="videos/destutter/1-before.jpg" aria-label="Raw pointflow before camera compensation"><source src="videos/destutter/1-before.mp4" type="video/mp4"></video></div>
+            <div class="video-shell"><video class="destutter-video" data-destutter-after muted playsinline loop preload="metadata" poster="videos/destutter/1-after.jpg" aria-label="Camera-compensated pointflow after destutter"><source src="videos/destutter/1-after.mp4" type="video/mp4"></video></div>
+          </div>
+        </div>
+      </article>
     </section>
 
-    <footer>
-      <a href="#top">PROJECT</a>
-      <p>Anonymous submission.</p>
-      <span>Anonymous project page · 2026</span>
-    </footer>
   </main>
 
   <script>
-    const copyButton = document.getElementById("copy-citation");
-    copyButton.addEventListener("click", async () => {
-      await navigator.clipboard.writeText(document.getElementById("citation").textContent);
-      copyButton.textContent = "Copied";
-      window.setTimeout(() => {
-        copyButton.textContent = "Copy citation";
-      }, 1800);
+    (() => {
+      const videos = Array.from(document.querySelectorAll('.sync-video'));
+      const master = videos[0];
+      const playButton = document.getElementById('play-all');
+      const resetButton = document.getElementById('reset-all');
+      const speedControl = document.getElementById('speed-control');
+      const range = document.getElementById('sync-range');
+      const currentLabel = document.getElementById('sync-current');
+      const totalLabel = document.getElementById('sync-total');
+      const durationLabel = document.getElementById('sync-duration');
+      const statusLabel = document.getElementById('sync-status');
+      let duration = 0;
+      let isPlaying = false;
+      let resetting = false;
+
+      const formatTime = (seconds) => {
+        if (!Number.isFinite(seconds) || seconds < 0) return '00:00';
+        const minutes = Math.floor(seconds / 60);
+        return `${String(minutes).padStart(2, '0')}:${String(Math.floor(seconds % 60)).padStart(2, '0')}`;
+      };
+      const readyVideos = () => videos.filter((video) => Number.isFinite(video.duration) && video.duration > 0);
+      const updateDuration = () => {
+        const values = readyVideos().map((video) => video.duration);
+        if (!values.length) return;
+        duration = Math.min(...values);
+        range.max = String(duration);
+        totalLabel.textContent = formatTime(duration);
+        durationLabel.textContent = formatTime(duration);
+      };
+      const syncTo = (seconds) => {
+        const next = Math.max(0, Math.min(seconds, duration || seconds));
+        videos.forEach((video) => { if (Math.abs(video.currentTime - next) > 0.01) video.currentTime = next; });
+        range.value = String(next);
+        currentLabel.textContent = formatTime(next);
+      };
+      const playAll = async (from) => {
+        if (typeof from === 'number') syncTo(from);
+        await Promise.allSettled(videos.map((video) => video.play()));
+        isPlaying = true;
+        playButton.innerHTML = '<span aria-hidden="true">Ⅱ</span>Pause';
+        statusLabel.textContent = 'Playing all clips';
+      };
+      const pauseAll = () => {
+        videos.forEach((video) => video.pause());
+        isPlaying = false;
+        playButton.innerHTML = '<span aria-hidden="true">▶</span>Play all';
+        statusLabel.textContent = 'Gallery paused';
+      };
+      videos.forEach((video) => {
+        video.addEventListener('loadedmetadata', updateDuration);
+        video.addEventListener('timeupdate', () => {
+          if (video !== master) return;
+          const time = master.currentTime;
+          if (duration > 0 && time >= duration - 0.04 && !resetting) {
+            resetting = true;
+            syncTo(0);
+            if (isPlaying) void playAll(0);
+            window.setTimeout(() => { resetting = false; }, 120);
+            return;
+          }
+          range.value = String(Math.min(time, duration || 1));
+          currentLabel.textContent = formatTime(time);
+          videos.forEach((other) => { if (other !== master && Math.abs(other.currentTime - time) > 0.08) other.currentTime = time; });
+        });
+        video.addEventListener('ended', () => {
+          if (resetting) return;
+          resetting = true;
+          syncTo(0);
+          if (isPlaying) void playAll(0);
+          window.setTimeout(() => { resetting = false; }, 120);
+        });
+      });
+      document.querySelectorAll('video.sync-video').forEach((video) => { video.playbackRate = 0.75; });
+      updateDuration();
+      playButton.addEventListener('click', () => isPlaying ? pauseAll() : void playAll(Number(range.value)));
+      resetButton.addEventListener('click', () => syncTo(0));
+      speedControl.addEventListener('change', () => videos.forEach((video) => { video.playbackRate = Number(speedControl.value); }));
+      range.addEventListener('input', () => syncTo(Number(range.value)));
+    })();
+    (() => {
+      document.querySelectorAll('.gallery-triptych-labels span:first-child').forEach((label) => { label.textContent = 'Input action skeleton'; });
+    })();
+    (() => {
+      document.querySelectorAll('[data-model-switcher]').forEach((switcher) => {
+        const tabs = Array.from(switcher.querySelectorAll('[data-model-name]'));
+        const video = switcher.querySelector('.downstream-switch-video');
+        const source = video?.querySelector('source');
+        const title = switcher.querySelector('[data-model-title]');
+        const instruction = switcher.querySelector('.model-stage-header [data-model-instruction]');
+        const speedControl = switcher.querySelector('[data-model-speed]');
+        if (!video || !source || !tabs.length) return;
+        const currentSpeed = () => Number(speedControl?.value || 1);
+        video.playbackRate = currentSpeed();
+        speedControl?.addEventListener('change', () => { video.playbackRate = currentSpeed(); });
+        const stage = switcher.querySelector('.downstream-extra-stage');
+        const speedWrap = speedControl?.closest('.model-speed-control');
+        const showChart = (tab) => tab.dataset.view === 'chart';
+        const activate = (tab) => {
+          const chart = showChart(tab);
+          const wasPlaying = !video.paused;
+          const currentTime = Number.isFinite(video.currentTime) ? video.currentTime : 0;
+          tabs.forEach((button) => {
+            const active = button === tab;
+            button.classList.toggle('is-active', active);
+            button.setAttribute('aria-selected', String(active));
+            if (button.dataset.modelName) button.textContent = button.dataset.modelName;
+          });
+          if (title) title.textContent = tab.dataset.modelName || '';
+          if (instruction && Object.prototype.hasOwnProperty.call(tab.dataset, 'modelInstruction')) {
+            instruction.textContent = tab.dataset.modelInstruction || '';
+          }
+          if (stage) stage.classList.toggle('is-chart', chart);
+          speedWrap?.classList.toggle('is-hidden', chart);
+          if (chart) {
+            video.pause();
+            return;
+          }
+          video.setAttribute('aria-label', `${tab.dataset.modelName || 'Model'} real and HF-WM comparison`);
+          video.addEventListener('loadedmetadata', () => {
+            video.playbackRate = currentSpeed();
+            if (Number.isFinite(video.duration) && video.duration > 0) video.currentTime = Math.min(currentTime, video.duration);
+            if (wasPlaying) void video.play().catch(() => {});
+          }, { once: true });
+          source.src = tab.dataset.videoSrc || '';
+          video.load();
+        };
+        tabs.forEach((tab) => tab.addEventListener('click', () => activate(tab)));
+      });
+      document.querySelectorAll('[data-cosmos-switcher]').forEach((switcher) => {
+        const tabs = Array.from(switcher.querySelectorAll('.model-tab'));
+        const title = switcher.querySelector('[data-model-title]');
+        const instruction = switcher.querySelector('[data-model-instruction]');
+        const playButton = switcher.querySelector('[data-ablation-play]');
+        const resetButton = switcher.querySelector('[data-ablation-reset]');
+        const cards = {
+          gt: switcher.querySelector('[data-cosmos-slot="gt"]'),
+          oscar: switcher.querySelector('[data-cosmos-slot="oscar"]'),
+          cosmos25: switcher.querySelector('[data-cosmos-slot="cosmos25"]'),
+          cosmos3: switcher.querySelector('[data-cosmos-slot="cosmos3"]'),
+          tesseract: switcher.querySelector('[data-cosmos-slot="tesseract"]'),
+          kinema4d: switcher.querySelector('[data-cosmos-slot="kinema4d"]'),
+          ctrlworld: switcher.querySelector('[data-cosmos-slot="ctrlworld"]'),
+          hfwm: switcher.querySelector('[data-cosmos-slot="hfwm"]'),
+        };
+        const srcKeys = {
+          gt: 'videoGt',
+          oscar: 'videoOscar',
+          cosmos25: 'videoCosmos25',
+          cosmos3: 'videoCosmos3',
+          tesseract: 'videoTesseract',
+          kinema4d: 'videoKinema4d',
+          ctrlworld: 'videoCtrlworld',
+          hfwm: 'videoHfwm',
+        };
+        const grid = switcher.querySelector('.ablation-compare-grid');
+        const reorderSlots = (order) => {
+          if (!grid || !order) return;
+          order.split(',').forEach((slot) => {
+            const card = cards[slot.trim()];
+            if (card) grid.appendChild(card);
+          });
+        };
+        let duration = 0;
+        let playing = false;
+        let resetting = false;
+
+        const allVideos = () => Array.from(switcher.querySelectorAll('video.ablation-video'));
+        const activeVideos = () => Array.from(switcher.querySelectorAll('.ablation-card:not(.is-empty) video.ablation-video'));
+        const setStatus = () => {};
+        const updateDuration = () => {
+          const values = activeVideos().filter((video) => Number.isFinite(video.duration) && video.duration > 0).map((video) => video.duration);
+          duration = values.length ? Math.min(...values) : 0;
+        };
+        const syncTo = (seconds) => {
+          const next = Math.max(0, Math.min(seconds, duration || seconds));
+          activeVideos().forEach((video) => { if (Math.abs(video.currentTime - next) > 0.02) video.currentTime = next; });
+        };
+        const lockRate = (video) => { video.playbackRate = 1; };
+        const playGroup = async () => {
+          const videos = activeVideos();
+          if (!videos.length) return;
+          videos.forEach(lockRate);
+          await Promise.allSettled(videos.map((video) => video.play()));
+          videos.forEach(lockRate);
+          playing = true;
+          playButton.innerHTML = '<span aria-hidden="true">Ⅱ</span>Pause';
+          setStatus();
+        };
+        const pauseGroup = () => {
+          allVideos().forEach((video) => video.pause());
+          playing = false;
+          playButton.innerHTML = '<span aria-hidden="true">▶</span>Play';
+          setStatus();
+        };
+        const applySlot = (card, src) => {
+          const video = card.querySelector('video');
+          const placeholder = card.querySelector('.ablation-placeholder');
+          const empty = !src;
+          card.classList.toggle('is-empty', empty);
+          if (placeholder) placeholder.hidden = !empty;
+          video.pause();
+          video.removeAttribute('src');
+          video.querySelectorAll('source').forEach((source) => source.remove());
+          if (empty) {
+            video.load();
+            return;
+          }
+          const source = document.createElement('source');
+          source.src = src;
+          source.type = 'video/mp4';
+          video.appendChild(source);
+          video.addEventListener('loadedmetadata', () => lockRate(video), { once: true });
+          video.load();
+          lockRate(video);
+        };
+        const activate = (tab) => {
+          const wasPlaying = playing;
+          pauseGroup();
+          tabs.forEach((button) => {
+            const active = button === tab;
+            button.classList.toggle('is-active', active);
+            button.setAttribute('aria-selected', String(active));
+          });
+          if (title) title.textContent = tab.dataset.caseName || '';
+          if (instruction) instruction.textContent = tab.dataset.caseInstruction || '';
+          reorderSlots(tab.dataset.slotOrder || '');
+          Object.entries(cards).forEach(([slot, card]) => {
+            if (!card) return;
+            applySlot(card, tab.dataset[srcKeys[slot]] || '');
+          });
+          duration = 0;
+          setStatus();
+          if (wasPlaying) {
+            const first = activeVideos()[0];
+            if (first) first.addEventListener('loadedmetadata', () => { void playGroup(); }, { once: true });
+          }
+        };
+        allVideos().forEach((video) => {
+          lockRate(video);
+          video.addEventListener('loadedmetadata', () => { lockRate(video); updateDuration(); });
+          video.addEventListener('timeupdate', () => {
+            const videos = activeVideos();
+            const master = videos[0];
+            if (video !== master || !duration || resetting) return;
+            if (master.currentTime >= duration - 0.05) {
+              resetting = true;
+              syncTo(0);
+              if (playing) void playGroup();
+              window.setTimeout(() => { resetting = false; }, 100);
+              return;
+            }
+            videos.forEach((other) => { if (other !== master && Math.abs(other.currentTime - master.currentTime) > 0.08) other.currentTime = master.currentTime; });
+          });
+        });
+        tabs.forEach((tab) => tab.addEventListener('click', () => activate(tab)));
+        const initial = tabs.find((tab) => tab.classList.contains('is-active')) || tabs[0];
+        if (initial?.dataset.slotOrder) reorderSlots(initial.dataset.slotOrder);
+        playButton.addEventListener('click', () => playing ? pauseGroup() : void playGroup());
+        resetButton.addEventListener('click', () => { syncTo(0); if (playing) pauseGroup(); });
+      });
+      document.querySelectorAll('[data-component-ablation]').forEach((switcher) => {
+        const tabs = Array.from(switcher.querySelectorAll('.model-tab'));
+        const title = switcher.querySelector('[data-model-title]');
+        const playButton = switcher.querySelector('[data-ablation-play]');
+        const resetButton = switcher.querySelector('[data-ablation-reset]');
+        const withLabel = switcher.querySelector('[data-ab-with-label]');
+        const withoutLabel = switcher.querySelector('[data-ab-without-label]');
+        const noteKicker = switcher.querySelector('[data-ab-note-kicker]');
+        const noteTitle = switcher.querySelector('[data-ab-note-title]');
+        const noteBody = switcher.querySelector('[data-ab-note-body]');
+        const cards = {
+          gt: switcher.querySelector('[data-ab-slot="gt"]'),
+          with: switcher.querySelector('[data-ab-slot="with"]'),
+          without: switcher.querySelector('[data-ab-slot="without"]'),
+        };
+        const srcKeys = { gt: 'videoGt', with: 'videoWith', without: 'videoWithout' };
+        const setSheepBoxVisibility = (tab) => {
+          const show = tab?.dataset.caseName === 'w/o pointflow'
+            && (tab?.dataset.videoWithout || '').includes('pointflow-without');
+          cards.without?.classList.toggle('has-sheep-box', show);
+        };
+        let duration = 0;
+        let playing = false;
+        let resetting = false;
+        const allVideos = () => Array.from(switcher.querySelectorAll('video.ablation-video'));
+        const activeVideos = () => Array.from(switcher.querySelectorAll('.ablation-card:not(.is-empty) video.ablation-video'));
+        const updateDuration = () => {
+          const values = activeVideos().filter((video) => Number.isFinite(video.duration) && video.duration > 0).map((video) => video.duration);
+          duration = values.length ? Math.min(...values) : 0;
+        };
+        const syncTo = (seconds) => {
+          const next = Math.max(0, Math.min(seconds, duration || seconds));
+          activeVideos().forEach((video) => { if (Math.abs(video.currentTime - next) > 0.02) video.currentTime = next; });
+        };
+        const lockRate = (video) => { video.playbackRate = 1; };
+        const playGroup = async () => {
+          const videos = activeVideos();
+          if (!videos.length) return;
+          videos.forEach(lockRate);
+          await Promise.allSettled(videos.map((video) => video.play()));
+          videos.forEach(lockRate);
+          playing = true;
+          playButton.innerHTML = '<span aria-hidden="true">Ⅱ</span>Pause';
+        };
+        const pauseGroup = () => {
+          allVideos().forEach((video) => video.pause());
+          playing = false;
+          playButton.innerHTML = '<span aria-hidden="true">▶</span>Play';
+        };
+        const applySlot = (card, src) => {
+          const video = card.querySelector('video');
+          const placeholder = card.querySelector('.ablation-placeholder');
+          const empty = !src;
+          card.classList.toggle('is-empty', empty);
+          if (placeholder) placeholder.hidden = !empty;
+          video.pause();
+          video.removeAttribute('src');
+          video.querySelectorAll('source').forEach((source) => source.remove());
+          if (empty) {
+            video.load();
+            return;
+          }
+          const source = document.createElement('source');
+          source.src = src;
+          source.type = 'video/mp4';
+          video.appendChild(source);
+          video.addEventListener('loadedmetadata', () => lockRate(video), { once: true });
+          video.load();
+          lockRate(video);
+        };
+        const activate = (tab) => {
+          const wasPlaying = playing;
+          pauseGroup();
+          tabs.forEach((button) => {
+            const active = button === tab;
+            button.classList.toggle('is-active', active);
+            button.setAttribute('aria-selected', String(active));
+          });
+          if (title) title.textContent = tab.dataset.caseName || '';
+          if (withLabel) withLabel.textContent = tab.dataset.withLabel || 'with';
+          if (withoutLabel) withoutLabel.textContent = tab.dataset.withoutLabel || 'without';
+          if (noteKicker) noteKicker.textContent = tab.dataset.noteKicker || '';
+          if (noteTitle) noteTitle.textContent = tab.dataset.noteTitle || '';
+          if (noteBody) noteBody.textContent = tab.dataset.noteBody || '';
+          setSheepBoxVisibility(tab);
+          const withVideo = cards.with?.querySelector('video');
+          const withoutVideo = cards.without?.querySelector('video');
+          if (withVideo) withVideo.setAttribute('aria-label', tab.dataset.withLabel || 'with');
+          if (withoutVideo) withoutVideo.setAttribute('aria-label', tab.dataset.withoutLabel || 'without');
+          Object.entries(cards).forEach(([slot, card]) => {
+            if (!card) return;
+            applySlot(card, tab.dataset[srcKeys[slot]] || '');
+          });
+          duration = 0;
+          if (wasPlaying) {
+            const first = activeVideos()[0];
+            if (first) first.addEventListener('loadedmetadata', () => { void playGroup(); }, { once: true });
+          }
+        };
+        allVideos().forEach((video) => {
+          lockRate(video);
+          video.addEventListener('loadedmetadata', () => { lockRate(video); updateDuration(); });
+          video.addEventListener('timeupdate', () => {
+            const videos = activeVideos();
+            const master = videos[0];
+            if (video !== master || !duration || resetting) return;
+            if (master.currentTime >= duration - 0.05) {
+              resetting = true;
+              syncTo(0);
+              if (playing) void playGroup();
+              window.setTimeout(() => { resetting = false; }, 100);
+              return;
+            }
+            videos.forEach((other) => { if (other !== master && Math.abs(other.currentTime - master.currentTime) > 0.08) other.currentTime = master.currentTime; });
+          });
+        });
+        tabs.forEach((tab) => tab.addEventListener('click', () => activate(tab)));
+        setSheepBoxVisibility(tabs.find((tab) => tab.classList.contains('is-active')) || tabs[0]);
+        playButton.addEventListener('click', () => playing ? pauseGroup() : void playGroup());
+        resetButton.addEventListener('click', () => { syncTo(0); if (playing) pauseGroup(); });
+      });
+    })();
+  </script>
+  <script>
+    document.querySelectorAll('video.sync-video').forEach((video) => {
+      video.playbackRate = 0.75;
+      video.addEventListener('loadedmetadata', () => { video.playbackRate = 0.75; });
     });
+  </script>
+  <script>
+    (() => {
+      document.querySelectorAll('[data-destutter]').forEach((root) => {
+        const tabs = Array.from(root.querySelectorAll('[data-case-name]'));
+        const before = root.querySelector('[data-destutter-before]');
+        const after = root.querySelector('[data-destutter-after]');
+        const playButton = root.querySelector('[data-destutter-play]');
+        const metric = root.querySelector('[data-destutter-metric]');
+        const videos = [before, after].filter(Boolean);
+        let playing = false;
+        const setButton = () => {
+          playButton.innerHTML = playing
+            ? '<span aria-hidden="true">Ⅱ</span>Pause'
+            : '<span aria-hidden="true">▶</span>Play';
+        };
+        const pausePair = () => {
+          videos.forEach((video) => video.pause());
+          playing = false;
+          setButton();
+        };
+        const playPair = async () => {
+          const time = videos[0]?.currentTime || 0;
+          videos.forEach((video) => { video.currentTime = time; });
+          await Promise.allSettled(videos.map((video) => video.play()));
+          playing = true;
+          setButton();
+        };
+        const loadSide = (video, src, poster) => {
+          if (!video || !src) return;
+          video.pause();
+          video.poster = poster || '';
+          video.querySelectorAll('source').forEach((source) => source.remove());
+          const source = document.createElement('source');
+          source.src = src;
+          source.type = 'video/mp4';
+          video.appendChild(source);
+          video.load();
+        };
+        const activate = (tab) => {
+          pausePair();
+          tabs.forEach((button) => {
+            const active = button === tab;
+            button.classList.toggle('is-active', active);
+            button.setAttribute('aria-selected', String(active));
+          });
+          if (metric) metric.textContent = tab.dataset.metric || '';
+          loadSide(before, tab.dataset.beforeSrc, tab.dataset.beforePoster);
+          loadSide(after, tab.dataset.afterSrc, tab.dataset.afterPoster);
+        };
+        videos.forEach((video) => {
+          video.addEventListener('timeupdate', () => {
+            if (video !== videos[0]) return;
+            videos.slice(1).forEach((other) => {
+              if (Math.abs(other.currentTime - video.currentTime) > 0.08) other.currentTime = video.currentTime;
+            });
+          });
+        });
+        tabs.forEach((tab) => tab.addEventListener('click', () => activate(tab)));
+        playButton?.addEventListener('click', () => playing ? pausePair() : void playPair());
+      });
+    })();
+  </script>
+  <script>
+    (() => {
+      const root = document.querySelector('[data-grpo-case-root]') || document.querySelector('.grpo-cases-block');
+      if (!root) return;
+      const tabs = Array.from(root.querySelectorAll('[data-grpo-case]'));
+      const panels = Array.from(root.querySelectorAll('[data-grpo-panel]'));
+      const panelFor = (name) => panels.find((panel) => panel.dataset.grpoPanel === name);
+      const videosFor = (panel) => Array.from(panel?.querySelectorAll('video') || []);
+      const pairVideosFor = (panel) => Array.from(panel?.querySelectorAll('.grpo-pair-video') || []);
+      const processVideosFor = (panel) => Array.from(panel?.querySelectorAll('.grpo-process-video') || []);
+      const originVideosFor = (panel) => Array.from(panel?.querySelectorAll('.grpo-origin-video') || []);
+      const initialVideoTime = 0.04;
+      const primeVideo = (video) => {
+        const seekToVisibleFrame = () => {
+          if (!video || video.readyState < 1 || video.currentTime > 0.001) return;
+          const duration = Number.isFinite(video.duration) ? video.duration : initialVideoTime;
+          video.currentTime = Math.min(initialVideoTime, Math.max(0, duration - 0.01));
+        };
+        video.addEventListener('loadedmetadata', seekToVisibleFrame, { once: true });
+        seekToVisibleFrame();
+      };
+      let activeCase = tabs.find((tab) => tab.classList.contains('is-active'))?.dataset.grpoCase || 'case1';
+      let playingCase = '';
+
+      const setButtonState = (name, playing) => {
+        const button = root.querySelector(`[data-grpo-play="${name}"]`);
+        if (!button) return;
+        button.innerHTML = playing
+          ? '<span aria-hidden="true">Ⅱ</span>Pause case ' + name.replace('case', '')
+          : '<span aria-hidden="true">▶</span>Play case ' + name.replace('case', '');
+      };
+      const pauseCase = (name) => {
+        const panel = panelFor(name);
+        videosFor(panel).forEach((video) => video.pause());
+        if (playingCase === name) playingCase = '';
+        setButtonState(name, false);
+      };
+      const resetCase = (name) => {
+        const panel = panelFor(name);
+        pauseCase(name);
+        videosFor(panel).forEach((video) => {
+          const duration = Number.isFinite(video.duration) ? video.duration : initialVideoTime;
+          video.currentTime = Math.min(initialVideoTime, Math.max(0, duration - 0.01));
+        });
+      };
+      const playCase = async (name) => {
+        const panel = panelFor(name);
+        const videos = videosFor(panel);
+        if (!videos.length) return;
+        if (playingCase && playingCase !== name) pauseCase(playingCase);
+        const pair = pairVideosFor(panel);
+        const pairTime = Number.isFinite(pair[0]?.currentTime) ? pair[0].currentTime : 0;
+        pair.forEach((video) => { video.currentTime = pairTime; });
+        await Promise.allSettled(videos.map((video) => video.play()));
+        playingCase = name;
+        setButtonState(name, true);
+      };
+      const activate = (tab) => {
+        const name = tab.dataset.grpoCase;
+        if (!name) return;
+        if (playingCase) pauseCase(playingCase);
+        tabs.forEach((button) => {
+          const selected = button === tab;
+          button.classList.toggle('is-active', selected);
+          button.setAttribute('aria-selected', String(selected));
+        });
+        panels.forEach((panel) => {
+          const selected = panel.dataset.grpoPanel === name;
+          panel.hidden = !selected;
+          panel.classList.toggle('is-active', selected);
+        });
+        activeCase = name;
+      };
+
+      tabs.forEach((tab) => tab.addEventListener('click', () => activate(tab)));
+      root.querySelectorAll('[data-grpo-play]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const name = button.dataset.grpoPlay;
+          if (playingCase === name) pauseCase(name);
+          else void playCase(name);
+        });
+      });
+      root.querySelectorAll('[data-grpo-reset]').forEach((button) => {
+        button.addEventListener('click', () => resetCase(button.dataset.grpoReset));
+      });
+
+      panels.forEach((panel) => {
+        const pair = pairVideosFor(panel);
+        const master = pair[0];
+        master?.addEventListener('timeupdate', () => {
+          pair.slice(1).forEach((other) => {
+            if (Math.abs(other.currentTime - master.currentTime) > 0.06) other.currentTime = master.currentTime;
+          });
+        });
+        pair.forEach((video) => video.addEventListener('ended', () => {
+          if (playingCase === panel.dataset.grpoPanel) {
+            video.currentTime = initialVideoTime;
+            void video.play().catch(() => {});
+          }
+        }));
+        [...processVideosFor(panel), ...originVideosFor(panel)].forEach((video) => {
+          video.addEventListener('ended', () => {
+            if (playingCase !== panel.dataset.grpoPanel) return;
+            video.currentTime = initialVideoTime;
+            void video.play().catch(() => {});
+          });
+        });
+        videosFor(panel).forEach(primeVideo);
+      });
+      panels.forEach((panel) => { panel.hidden = panel.dataset.grpoPanel !== activeCase; });
+      tabs.forEach((tab) => { tab.setAttribute('aria-selected', String(tab.dataset.grpoCase === activeCase)); });
+      tabs.forEach((tab) => setButtonState(tab.dataset.grpoCase, false));
+    })();
   </script>
 </body>
 </html>
