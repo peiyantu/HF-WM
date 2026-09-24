@@ -608,8 +608,7 @@
         };
         const srcKeys = { gt: 'videoGt', with: 'videoWith', without: 'videoWithout' };
         const setSheepBoxVisibility = (tab) => {
-          const show = tab?.dataset.caseName === 'w/o pointflow'
-            && (tab?.dataset.videoWithout || '').includes('pointflow-without');
+          const show = tab?.dataset.caseName === 'w/o pointflow';
           cards.without?.classList.toggle('has-sheep-box', show);
         };
         let duration = 0;
