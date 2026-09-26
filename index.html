@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;600;700&family=Inter:wght@400;500;600&family=Lora:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="template.css?v=20260924-origin-crop">
+    <link rel="stylesheet" href="template.css?v=20260926-action-reward">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 <body>
@@ -17,21 +17,21 @@
       <div class="hero-inner">
         <h1><span class="hero-mark">HF-WM</span><span class="hero-title">Beyond Successful Robot Demonstrations</span><small>Learning from Human Interactions and Modeling Failure Dynamics</small></h1>
         <nav class="resource-links" aria-label="Project resources">
-          <a href="#downstream">Downstream tasks <span aria-hidden="true">↓</span></a>
           <a href="#gallery">Watch the rollouts <span aria-hidden="true">↓</span></a>
+          <a href="#downstream">Downstream tasks <span aria-hidden="true">↓</span></a>
         </nav>
       </div>
     </header>
 
     <nav class="section-nav" aria-label="Page sections">
       <div><div class="nav-links">
-        <a href="#teaser">Teaser</a><a href="#abstract">Abstract</a><a href="#gallery">Gallery</a><a href="#downstream">Downstream</a><a href="#ablation">Compare</a><a href="#figures">Ablation</a><a href="#grpo-cases">GRPO cases</a><a href="#destutter">Pointflow</a>
+        <a href="#teaser">Teaser</a><a href="#abstract">Abstract</a><a href="#gallery">Gallery</a><a href="#downstream">Downstream</a><a href="#ablation">Baselines</a><a href="#figures">Ablations</a><a href="#grpo-cases">GRPO cases</a><!-- <a href="#action-reward">Action reward</a> --><a href="#destutter">Pointflow</a>
       </div></div>
     </nav>
 
     <section class="section teaser-section" id="teaser">
       <figure class="teaser-figure">
-        <img src="figures/teaser-1.png?v=20260923lty" alt="HF-WM teaser: Stage 1 supervised fine-tuning learns an action-conditioned world model from human to robot, and Stage 2 GRPO models failure outcomes without paired video supervision" width="2400" height="1041">
+        <img src="figures/teaser-1.png?v=20260926teaser-f-latest" alt="HF-WM teaser: Stage 1 supervised fine-tuning learns an action-conditioned world model from human to robot, and Stage 2 GRPO models failure outcomes without paired video supervision" width="2400" height="1041">
       </figure>
       <div class="teaser-highlights" aria-label="Key contributions">
         <article class="teaser-highlight-card">
@@ -66,14 +66,13 @@
         </div>
 
         <div class="gallery-grid">
-      <article class="gallery-demo"><div class="gallery-demo-heading"><span class="video-index">01</span><div><span>Robot manipulation</span><strong>Clothes / record 011</strong></div></div><div class="gallery-triptych-labels"><span>Input skeleton</span><span>Generated RGB</span><span>RGB + point flow</span></div><div class="gallery-triptych"><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Clothes record 011 input action skeleton"><source src="videos/gallery/1-skeleton.mp4?v=20260922s" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Clothes record 011 generated RGB"><source src="videos/gallery/1-rgb.mp4" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Clothes record 011 RGB with CoWTracker point flow"><source src="videos/gallery/1-pointflow.mp4?v=20260927h" type="video/mp4"></video></div></div></article>
-      <article class="gallery-demo"><div class="gallery-demo-heading"><span class="video-index">02</span><div><span>Robot manipulation</span><strong>Fruit on plate / record 014</strong></div></div><div class="gallery-triptych-labels"><span>Input skeleton</span><span>Generated RGB</span><span>RGB + point flow</span></div><div class="gallery-triptych"><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Fruit on plate record 014 input action skeleton"><source src="videos/gallery/2-skeleton.mp4?v=20260922s" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Fruit on plate record 014 generated RGB"><source src="videos/gallery/2-rgb.mp4" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Fruit on plate record 014 RGB with CoWTracker point flow"><source src="videos/gallery/2-pointflow.mp4?v=20260927h" type="video/mp4"></video></div></div></article>
-      <article class="gallery-demo"><div class="gallery-demo-heading"><span class="video-index">03</span><div><span>Robot manipulation</span><strong>White cloth / DROID 07561</strong></div></div><div class="gallery-triptych-labels"><span>Input skeleton</span><span>Generated RGB</span><span>RGB + point flow</span></div><div class="gallery-triptych"><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="White cloth DROID 07561 input action skeleton"><source src="videos/gallery/3-skeleton.mp4?v=20260923droid07561" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="White cloth DROID 07561 generated RGB"><source src="videos/gallery/3-rgb.mp4" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="White cloth DROID 07561 RGB with CoWTracker point flow"><source src="videos/gallery/3-pointflow.mp4?v=20260927h" type="video/mp4"></video></div></div></article>
-      <article class="gallery-demo"><div class="gallery-demo-heading"><span class="video-index">04</span><div><span>Robot manipulation</span><strong>Lab tabletop / colorful blocks · DROID 03536</strong></div></div><div class="gallery-triptych-labels"><span>Input skeleton</span><span>Generated RGB</span><span>RGB + point flow</span></div><div class="gallery-triptych"><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Lab tabletop colorful blocks DROID 03536 input action skeleton"><source src="videos/gallery/4-skeleton.mp4?v=20260923droid03536" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Lab tabletop colorful blocks DROID 03536 generated RGB"><source src="videos/gallery/4-rgb.mp4" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Lab tabletop colorful blocks DROID 03536 RGB with CoWTracker point flow"><source src="videos/gallery/4-pointflow.mp4?v=20260927h" type="video/mp4"></video></div></div></article>
-      <article class="gallery-demo"><div class="gallery-demo-heading"><span class="video-index">05</span><div><span>Robot manipulation</span><strong>Open drawer / DROID 00025</strong></div></div><div class="gallery-triptych-labels"><span>Input skeleton</span><span>Generated RGB</span><span>RGB + point flow</span></div><div class="gallery-triptych"><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Open drawer DROID 00025 input action skeleton"><source src="videos/gallery/5-skeleton.mp4?v=20260923first81" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Open drawer DROID 00025 generated RGB"><source src="videos/gallery/5-rgb.mp4" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Open drawer DROID 00025 RGB with CoWTracker point flow"><source src="videos/gallery/5-pointflow.mp4?v=20260927h" type="video/mp4"></video></div></div></article>
-      <article class="gallery-demo"><div class="gallery-demo-heading"><span class="video-index">06</span><div><span>Robot manipulation</span><strong>Yellow cube / DROID 00051</strong></div></div><div class="gallery-triptych-labels"><span>Input skeleton</span><span>Generated RGB</span><span>RGB + point flow</span></div><div class="gallery-triptych"><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Yellow cube DROID 00051 input action skeleton"><source src="videos/gallery/6-skeleton.mp4?v=20260923uniform81b" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Yellow cube DROID 00051 generated RGB"><source src="videos/gallery/6-rgb.mp4?v=20260923same-pointflow-rgb" type="video/mp4"></video></div><div class="video-shell"><video class="sync-video" muted playsinline preload="metadata" aria-label="Yellow cube DROID 00051 RGB with CoWTracker point flow"><source src="videos/gallery/6-pointflow.mp4?v=20260927h" type="video/mp4"></video></div></div></article>
+      <article class="gallery-demo"><div class="gallery-demo-heading"><span class="video-index">01</span><div><span>Robot manipulation</span><strong>Clothes / record 011</strong></div></div><div class="gallery-triptych-labels"><span>Input skeleton</span><span>Generated RGB</span><span>RGB + point flow</span></div><div class="gallery-triptych"><div class="video-shell"><video loop class="sync-video" muted playsinline preload="metadata" aria-label="Clothes record 011 input action skeleton"><source src="videos/gallery/1-skeleton.mp4?v=20260922s" type="video/mp4"></video></div><div class="video-shell"><video loop class="sync-video" muted playsinline preload="metadata" aria-label="Clothes record 011 generated RGB"><source src="videos/gallery/1-rgb.mp4" type="video/mp4"></video></div><div class="video-shell"><video loop class="sync-video" muted playsinline preload="metadata" aria-label="Clothes record 011 RGB with CoWTracker point flow"><source src="videos/gallery/1-pointflow.mp4?v=20260927h" type="video/mp4"></video></div></div></article>
+      <article class="gallery-demo"><div class="gallery-demo-heading"><span class="video-index">02</span><div><span>Robot manipulation</span><strong>Fruit on plate / record 014</strong></div></div><div class="gallery-triptych-labels"><span>Input skeleton</span><span>Generated RGB</span><span>RGB + point flow</span></div><div class="gallery-triptych"><div class="video-shell"><video loop class="sync-video" muted playsinline preload="metadata" aria-label="Fruit on plate record 014 input action skeleton"><source src="videos/gallery/2-skeleton.mp4?v=20260922s" type="video/mp4"></video></div><div class="video-shell"><video loop class="sync-video" muted playsinline preload="metadata" aria-label="Fruit on plate record 014 generated RGB"><source src="videos/gallery/2-rgb.mp4" type="video/mp4"></video></div><div class="video-shell"><video loop class="sync-video" muted playsinline preload="metadata" aria-label="Fruit on plate record 014 RGB with CoWTracker point flow"><source src="videos/gallery/2-pointflow.mp4?v=20260927h" type="video/mp4"></video></div></div></article>
+      <article class="gallery-demo"><div class="gallery-demo-heading"><span class="video-index">03</span><div><span>Robot manipulation</span><strong>White cloth / DROID 07561</strong></div></div><div class="gallery-triptych-labels"><span>Input skeleton</span><span>Generated RGB</span><span>RGB + point flow</span></div><div class="gallery-triptych"><div class="video-shell"><video loop class="sync-video" muted playsinline preload="metadata" aria-label="White cloth DROID 07561 input action skeleton"><source src="videos/gallery/3-skeleton.mp4?v=20260923droid07561" type="video/mp4"></video></div><div class="video-shell"><video loop class="sync-video" muted playsinline preload="metadata" aria-label="White cloth DROID 07561 generated RGB"><source src="videos/gallery/3-rgb.mp4" type="video/mp4"></video></div><div class="video-shell"><video loop class="sync-video" muted playsinline preload="metadata" aria-label="White cloth DROID 07561 RGB with CoWTracker point flow"><source src="videos/gallery/3-pointflow.mp4?v=20260927h" type="video/mp4"></video></div></div></article>
+      <article class="gallery-demo"><div class="gallery-demo-heading"><span class="video-index">04</span><div><span>Robot manipulation</span><strong>Lab tabletop / colorful blocks · DROID 03536</strong></div></div><div class="gallery-triptych-labels"><span>Input skeleton</span><span>Generated RGB</span><span>RGB + point flow</span></div><div class="gallery-triptych"><div class="video-shell"><video loop class="sync-video" muted playsinline preload="metadata" aria-label="Lab tabletop colorful blocks DROID 03536 input action skeleton"><source src="videos/gallery/4-skeleton.mp4?v=20260923droid03536" type="video/mp4"></video></div><div class="video-shell"><video loop class="sync-video" muted playsinline preload="metadata" aria-label="Lab tabletop colorful blocks DROID 03536 generated RGB"><source src="videos/gallery/4-rgb.mp4" type="video/mp4"></video></div><div class="video-shell"><video loop class="sync-video" muted playsinline preload="metadata" aria-label="Lab tabletop colorful blocks DROID 03536 RGB with CoWTracker point flow"><source src="videos/gallery/4-pointflow.mp4?v=20260927h" type="video/mp4"></video></div></div></article>
+      <article class="gallery-demo"><div class="gallery-demo-heading"><span class="video-index">05</span><div><span>Robot manipulation</span><strong>Open drawer / DROID 00025</strong></div></div><div class="gallery-triptych-labels"><span>Input skeleton</span><span>Generated RGB</span><span>RGB + point flow</span></div><div class="gallery-triptych"><div class="video-shell"><video loop class="sync-video" muted playsinline preload="metadata" aria-label="Open drawer DROID 00025 input action skeleton"><source src="videos/gallery/5-skeleton.mp4?v=20260923first81" type="video/mp4"></video></div><div class="video-shell"><video loop class="sync-video" muted playsinline preload="metadata" aria-label="Open drawer DROID 00025 generated RGB"><source src="videos/gallery/5-rgb.mp4" type="video/mp4"></video></div><div class="video-shell"><video loop class="sync-video" muted playsinline preload="metadata" aria-label="Open drawer DROID 00025 RGB with CoWTracker point flow"><source src="videos/gallery/5-pointflow.mp4?v=20260927h" type="video/mp4"></video></div></div></article>
+      <article class="gallery-demo"><div class="gallery-demo-heading"><span class="video-index">06</span><div><span>Robot manipulation</span><strong>Yellow cube / DROID 00051</strong></div></div><div class="gallery-triptych-labels"><span>Input skeleton</span><span>Generated RGB</span><span>RGB + point flow</span></div><div class="gallery-triptych"><div class="video-shell"><video loop class="sync-video" muted playsinline preload="metadata" aria-label="Yellow cube DROID 00051 input action skeleton"><source src="videos/gallery/6-skeleton.mp4?v=20260923uniform81b" type="video/mp4"></video></div><div class="video-shell"><video loop class="sync-video" muted playsinline preload="metadata" aria-label="Yellow cube DROID 00051 generated RGB"><source src="videos/gallery/6-rgb.mp4?v=20260923same-pointflow-rgb" type="video/mp4"></video></div><div class="video-shell"><video loop class="sync-video" muted playsinline preload="metadata" aria-label="Yellow cube DROID 00051 RGB with CoWTracker point flow"><source src="videos/gallery/6-pointflow.mp4?v=20260927h" type="video/mp4"></video></div></div></article>
         </div>
-        <p class="gallery-note">All 18 clips share one playhead. The shortest clip defines the loop so every view stays aligned.</p>
       </div>
     </section>
 
@@ -81,46 +80,15 @@
       <div class="section-heading"><h2>02 · Downstream validation</h2></div>
       <div class="downstream-part" id="policy-evaluation">
         <h3 class="downstream-part-title">A · Policy Evaluation</h3>
-      <article class="downstream-switcher" data-model-switcher>
-        <div class="model-tabs" role="tablist" aria-label="Wooden block policy model selector">
-          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="π₀-flow" data-video-src="videos/downstream/1-1.mp4">π₀-flow</button>
-          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-FAST" data-video-src="videos/downstream/1-2.mp4">PG-FAST</button>
-          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-FAST+" data-video-src="videos/downstream/1-3.mp4">PG-FAST+</button>
-          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-FSQ" data-video-src="videos/downstream/1-4.mp4">PG-FSQ</button>
-          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-flow" data-video-src="videos/downstream/1-5.mp4">PG-flow</button>
-          <button class="model-tab is-active" type="button" role="tab" aria-selected="true" data-model-name="π₀-FAST" data-video-src="videos/downstream/1-6.mp4">π₀-FAST</button>
-        </div>
-        <div class="model-stage">
-          <div class="model-stage-header"><div><h3 data-model-title>π₀-flow</h3><p>Uncover the wooden block.</p></div><label class="model-speed-control"><span>Speed</span><select data-model-speed aria-label="Playback speed"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option><option value="3" selected>3×</option></select></label></div>
-          <div class="downstream-switch-video-shell"><video class="downstream-switch-video" controls playsinline preload="metadata" aria-label="π₀-flow real and HF-WM comparison"><source src="videos/downstream/1-1.mp4" type="video/mp4"></video></div>
-        </div>
-      </article>
-
-      <article class="downstream-switcher" data-model-switcher>
-        <div class="model-tabs" role="tablist" aria-label="Juice pour policy model selector">
-          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="π₀-flow" data-video-src="videos/downstream/2-1.mp4">π₀-flow</button>
-          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-FAST" data-video-src="videos/downstream/2-2.mp4">PG-FAST</button>
-          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-FAST+" data-video-src="videos/downstream/2-3.mp4">PG-FAST+</button>
-          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-FSQ" data-video-src="videos/downstream/2-4.mp4">PG-FSQ</button>
-          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-flow" data-video-src="videos/downstream/2-5.mp4">PG-flow</button>
-          <button class="model-tab is-active" type="button" role="tab" aria-selected="true" data-model-name="π₀-FAST" data-video-src="videos/downstream/2-6.mp4">π₀-FAST</button>
-        </div>
-        <div class="model-stage">
-          <div class="model-stage-header"><div><h3 data-model-title>π₀-flow</h3><p>Pour some juice in the white cup. Then keep the juice bottle back.</p></div><label class="model-speed-control"><span>Speed</span><select data-model-speed aria-label="Playback speed"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option><option value="3" selected>3×</option></select></label></div>
-          <div class="downstream-switch-video-shell"><video class="downstream-switch-video" controls playsinline preload="metadata" aria-label="π₀-flow real and HF-WM comparison"><source src="videos/downstream/2-1.mp4" type="video/mp4"></video></div>
-        </div>
-      </article>
-
+        <p class="downstream-part-copy">HF-WM is used as a real-world policy evaluator on six RoboArena policies. For each session it receives only the initial observation and the policy action sequence, then autoregressively rolls out the future interaction. Task success is scored from these generated videos, and the resulting policy rates track real-world deployment with Pearson <i>r</i> = 0.983.</p>
       <article class="downstream-switcher" data-model-switcher data-extra-rollouts>
         <div class="model-tabs" role="tablist" aria-label="Extra RoboArena rollout selector">
           <button class="model-tab is-active" type="button" role="tab" aria-selected="true" data-model-name="Overview" data-model-instruction="" data-view="chart">Overview</button>
-          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="Case 1" data-model-instruction="Place the square on the plate." data-view="video" data-video-src="videos/downstream/3-1.mp4">Case 1</button>
-          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="Case 2" data-model-instruction="Put the green cube in the pink bowl." data-view="video" data-video-src="videos/downstream/3-2.mp4">Case 2</button>
         </div>
         <div class="model-stage downstream-extra-stage is-chart">
-          <div class="model-stage-header"><div><span class="downstream-kicker">Extra RoboArena rollouts</span><h3 data-model-title>Overview</h3><p data-model-instruction></p></div><label class="model-speed-control is-hidden"><span>Speed</span><select data-model-speed aria-label="Playback speed"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label></div>
+          <div class="model-stage-header"><div><span class="downstream-kicker">Extra RoboArena rollouts</span><h3 data-model-title>Overview</h3><p data-model-instruction></p></div><div class="model-stage-actions is-hidden"><button class="sync-play" type="button" data-model-play><span aria-hidden="true">▶</span>Play</button><button class="sync-secondary" type="button" data-model-reset>Reset</button><label class="model-speed-control"><span>Speed</span><select data-model-speed aria-label="Playback speed"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></label></div></div>
           <div class="downstream-extra-panel">
-            <figure class="downstream-extra-figure"><img src="figures/downstream-1.png" alt="RoboArena downstream success-rate comparison across policies" loading="lazy"></figure>
+            <figure class="downstream-extra-figure"><img src="figures/downstream-1.png?v=20260926bar" alt="RoboArena downstream success-rate comparison across policies" loading="lazy"></figure>
             <div class="downstream-metric-stack" aria-label="Policy-rate agreement metrics">
               <article class="downstream-metric-card">
                 <span>Pearson <i>r</i></span>
@@ -144,36 +112,82 @@
               </article>
             </div>
           </div>
-          <div class="downstream-switch-video-shell"><video class="downstream-switch-video" controls playsinline preload="metadata" aria-label="Extra RoboArena rollout"><source src="videos/downstream/3-1.mp4" type="video/mp4"></video></div>
+          <div class="downstream-switch-video-shell">
+            <video loop class="downstream-switch-video" controls muted playsinline preload="metadata" aria-label="Extra RoboArena rollout"><source src="videos/downstream/3-1.mp4" type="video/mp4"></video>
+            <div class="downstream-video-overlay" aria-hidden="true"><div class="downstream-video-labels"><span>Real-world</span><span>HF-WM rollout</span></div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="downstream-switcher" data-model-switcher>
+        <div class="model-tabs" role="tablist" aria-label="Case 1 policy model selector">
+          <button class="model-tab is-active" type="button" role="tab" aria-selected="true" data-model-name="Case 1" data-model-instruction="Place the square on the plate." data-video-src="videos/downstream/3-1.mp4">Case 1</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="π₀-flow" data-model-instruction="Uncover the wooden block." data-video-src="videos/downstream/1-1.mp4">π₀-flow</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-FAST" data-video-src="videos/downstream/1-2.mp4">PG-FAST</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-FAST+" data-video-src="videos/downstream/1-3.mp4">PG-FAST+</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-FSQ" data-video-src="videos/downstream/1-4.mp4">PG-FSQ</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-flow" data-video-src="videos/downstream/1-5.mp4">PG-flow</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="π₀-FAST" data-video-src="videos/downstream/1-6.mp4">π₀-FAST</button>
+        </div>
+        <div class="model-stage">
+          <div class="model-stage-header"><div><h3 data-model-title>Case 1</h3><p data-model-instruction>Place the square on the plate.</p></div><div class="model-stage-actions"><button class="sync-play" type="button" data-model-play><span aria-hidden="true">▶</span>Play</button><button class="sync-secondary" type="button" data-model-reset>Reset</button><label class="model-speed-control"><span>Speed</span><select data-model-speed aria-label="Playback speed"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option><option value="3" selected>3×</option></select></label></div></div>
+          <div class="downstream-switch-video-shell">
+            <video loop class="downstream-switch-video" controls muted playsinline preload="metadata" aria-label="Case 1 real and HF-WM comparison"><source src="videos/downstream/3-1.mp4" type="video/mp4"></video>
+            <div class="downstream-video-overlay" aria-hidden="true"><div class="downstream-video-labels"><span>Real-world</span><span>HF-WM rollout</span></div></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="downstream-switcher" data-model-switcher>
+        <div class="model-tabs" role="tablist" aria-label="Case 2 policy model selector">
+          <button class="model-tab is-active" type="button" role="tab" aria-selected="true" data-model-name="Case 2" data-model-instruction="Put the green cube in the pink bowl." data-video-src="videos/downstream/3-2.mp4">Case 2</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="π₀-flow" data-model-instruction="Pour some juice in the white cup. Then keep the juice bottle back." data-video-src="videos/downstream/2-1.mp4">π₀-flow</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-FAST" data-video-src="videos/downstream/2-2.mp4">PG-FAST</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-FAST+" data-video-src="videos/downstream/2-3.mp4">PG-FAST+</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-FSQ" data-video-src="videos/downstream/2-4.mp4">PG-FSQ</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="PG-flow" data-video-src="videos/downstream/2-5.mp4">PG-flow</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-model-name="π₀-FAST" data-video-src="videos/downstream/2-6.mp4">π₀-FAST</button>
+        </div>
+        <div class="model-stage">
+          <div class="model-stage-header"><div><h3 data-model-title>Case 2</h3><p data-model-instruction>Put the green cube in the pink bowl.</p></div><div class="model-stage-actions"><button class="sync-play" type="button" data-model-play><span aria-hidden="true">▶</span>Play</button><button class="sync-secondary" type="button" data-model-reset>Reset</button><label class="model-speed-control"><span>Speed</span><select data-model-speed aria-label="Playback speed"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option><option value="3" selected>3×</option></select></label></div></div>
+          <div class="downstream-switch-video-shell">
+            <video loop class="downstream-switch-video" controls muted playsinline preload="metadata" aria-label="Case 2 real and HF-WM comparison"><source src="videos/downstream/3-2.mp4" type="video/mp4"></video>
+            <div class="downstream-video-overlay" aria-hidden="true"><div class="downstream-video-labels"><span>Real-world</span><span>HF-WM rollout</span></div></div>
+          </div>
         </div>
       </article>
       </div>
       <div class="ttc-block downstream-part" id="ttc-comparisons">
         <h3 class="downstream-part-title">B · Test-Time Scaling for Policy Inference</h3>
+        <p class="downstream-part-copy">At test time, HF-WM generates candidate futures for sampled actions and Robometer scores them before execution. Selecting the higher-scoring action shortens the executed trajectory relative to the π<sub>0.5</sub> baseline, as shown in the two LIBERO-90 examples below.</p>
         <figure class="ttc-overview-figure">
-          <img src="figures/downstream-2.png?v=20260922ttc" alt="TTC routing overview: HF-WM generates candidate actions, Robometer evaluates them, and the selected action is executed; the right panel compares HF-WM TTS with the pi0.5 baseline" width="5646" height="1772">
+          <img src="figures/downstream-2.png?v=20260926ttc" alt="TTC routing overview: HF-WM generates candidate actions, Robometer evaluates them, and the selected action is executed; the right panel compares HF-WM TTS with the pi0.5 baseline" width="5646" height="1772">
         </figure>
         <div class="ttc-grid">
           <figure class="ttc-card">
             <figcaption><div class="ttc-card-title"><span>Task 1</span></div><small>Before: 143 steps · After: 70 steps</small></figcaption>
             <div class="ttc-video-shell">
-              <video class="ttc-video" controls playsinline preload="metadata" poster="videos/downstream/ttc-1-poster.png" aria-label="LIBERO-90 task 28 comparison: close the top drawer"><source src="videos/downstream/ttc-1.mp4" type="video/mp4"></video>
+              <video class="ttc-video" controls muted autoplay loop playsinline preload="auto" poster="videos/downstream/ttc-1-poster.png" aria-label="LIBERO-90 task 28 comparison: close the top drawer"><source src="videos/downstream/ttc-1.mp4" type="video/mp4"></video>
               <div class="ttc-video-overlay" aria-hidden="true"><div class="ttc-video-labels"><span>Before TTC</span><span>AFTER TTC</span></div></div>
             </div>
           </figure>
           <figure class="ttc-card">
             <figcaption><div class="ttc-card-title"><span>Task 2</span></div><small>Before: 373 steps · After: 240 steps</small></figcaption>
             <div class="ttc-video-shell">
-              <video class="ttc-video" controls playsinline preload="metadata" poster="videos/downstream/ttc-2-poster.png" aria-label="LIBERO-90 task 2 comparison: put the black bowl in the top drawer"><source src="videos/downstream/ttc-2.mp4" type="video/mp4"></video>
+              <video class="ttc-video" controls muted autoplay loop playsinline preload="auto" poster="videos/downstream/ttc-2-poster.png" aria-label="LIBERO-90 task 2 comparison: put the black bowl in the top drawer"><source src="videos/downstream/ttc-2.mp4" type="video/mp4"></video>
               <div class="ttc-video-overlay" aria-hidden="true"><div class="ttc-video-labels"><span>Before TTC</span><span>AFTER TTC</span></div></div>
             </div>
           </figure>
+        </div>
+        <div class="ttc-controls">
+          <button class="sync-play" type="button" data-ttc-play><span aria-hidden="true">▶</span>Play</button>
+          <button class="sync-secondary" type="button" data-ttc-reset>Reset</button>
         </div>
       </div>
     </section>
 
     <section class="section ablation-section" id="ablation">
-      <div class="section-heading"><h2>03 · Compare</h2></div>
+      <div class="section-heading"><h2>03 · Comparison with baselines</h2></div>
       <article class="downstream-switcher ablation-switcher" data-cosmos-switcher>
         <div class="model-tabs" role="tablist" aria-label="Success case selector">
           <button class="model-tab is-active" type="button" role="tab" aria-selected="true" data-case-name="Success Case 1" data-slot-order="gt,hfwm,oscar,cosmos3,cosmos25,tesseract,kinema4d,ctrlworld" data-video-gt="videos/compare/success-1-gt.mp4?v=20260923f80" data-video-oscar="videos/compare/success-1-oscar.mp4?v=20260923f80" data-video-cosmos25="videos/compare/success-1-cosmos25.mp4?v=20260923f80" data-video-cosmos3="videos/compare/success-1-cosmos3.mp4?v=20260923f80" data-video-tesseract="videos/compare/success-1-tesseract.mp4?v=20260923f80" data-video-kinema4d="videos/compare/success-1-kinema4d.mp4?v=20260923f80" data-video-ctrlworld="videos/compare/success-1-ctrlworld.mp4?v=20260923f80" data-video-hfwm="videos/compare/success-1-hfwm.mp4?v=20260923f80">Case 1</button>
@@ -184,14 +198,14 @@
           <div class="model-stage-header"><h3 class="ablation-case-title" data-model-title>Success Case 1</h3></div>
           <div class="ablation-controls"><button class="sync-play" type="button" data-ablation-play><span aria-hidden="true">▶</span>Play</button><button class="sync-secondary" type="button" data-ablation-reset>Reset</button></div>
           <div class="ablation-compare-grid">
-            <figure class="ablation-card" data-cosmos-slot="gt"><figcaption><span>GT</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="GT"><source src="videos/compare/success-1-gt.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
-            <figure class="ablation-card" data-cosmos-slot="hfwm"><figcaption><span>HF-WM</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="HF-WM"><source src="videos/compare/success-1-hfwm.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
-            <figure class="ablation-card" data-cosmos-slot="oscar"><figcaption><span>OSCAR</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="OSCAR"><source src="videos/compare/success-1-oscar.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
-            <figure class="ablation-card" data-cosmos-slot="cosmos3"><figcaption><span>cosmos3</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="cosmos3"><source src="videos/compare/success-1-cosmos3.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
-            <figure class="ablation-card" data-cosmos-slot="cosmos25"><figcaption><span>Cosmos-Predict2.5</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="Cosmos-Predict2.5"><source src="videos/compare/success-1-cosmos25.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
-            <figure class="ablation-card" data-cosmos-slot="tesseract"><figcaption><span>Tesseract</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="Tesseract"><source src="videos/compare/success-1-tesseract.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
-            <figure class="ablation-card" data-cosmos-slot="kinema4d"><figcaption><span>Kinema4D</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="Kinema4D"><source src="videos/compare/success-1-kinema4d.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
-            <figure class="ablation-card" data-cosmos-slot="ctrlworld"><figcaption><span>Ctrl-World</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="Ctrl-World"><source src="videos/compare/success-1-ctrlworld.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="gt"><figcaption><span>GT</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="GT"><source src="videos/compare/success-1-gt.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="hfwm"><figcaption><span>HF-WM</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="HF-WM"><source src="videos/compare/success-1-hfwm.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="oscar"><figcaption><span>OSCAR</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="OSCAR"><source src="videos/compare/success-1-oscar.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="cosmos3"><figcaption><span>cosmos3</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="cosmos3"><source src="videos/compare/success-1-cosmos3.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="cosmos25"><figcaption><span>Cosmos-Predict2.5</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="Cosmos-Predict2.5"><source src="videos/compare/success-1-cosmos25.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="tesseract"><figcaption><span>Tesseract</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="Tesseract"><source src="videos/compare/success-1-tesseract.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="kinema4d"><figcaption><span>Kinema4D</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="Kinema4D"><source src="videos/compare/success-1-kinema4d.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="ctrlworld"><figcaption><span>Ctrl-World</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="Ctrl-World"><source src="videos/compare/success-1-ctrlworld.mp4?v=20260923f80" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
           </div>
         </div>
       </article>
@@ -206,21 +220,21 @@
           <div class="model-stage-header"><h3 class="ablation-case-title" data-model-title>Failure Case 1</h3></div>
           <div class="ablation-controls"><button class="sync-play" type="button" data-ablation-play><span aria-hidden="true">▶</span>Play</button><button class="sync-secondary" type="button" data-ablation-reset>Reset</button></div>
           <div class="ablation-compare-grid">
-            <figure class="ablation-card" data-cosmos-slot="gt"><figcaption><span>GT</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="GT"><source src="videos/compare/failure-1-gt.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
-            <figure class="ablation-card" data-cosmos-slot="hfwm"><figcaption><span>HF-WM</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="HF-WM"><source src="videos/compare/failure-1-hfwm.mp4?v=20260924sft50" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
-            <figure class="ablation-card" data-cosmos-slot="oscar"><figcaption><span>OSCAR</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="OSCAR"><source src="videos/compare/failure-1-oscar.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
-            <figure class="ablation-card" data-cosmos-slot="ctrlworld"><figcaption><span>Ctrl-World</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="Ctrl-World"><source src="videos/compare/failure-1-ctrlworld.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
-            <figure class="ablation-card" data-cosmos-slot="cosmos3"><figcaption><span>cosmos3</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="cosmos3"><source src="videos/compare/failure-1-cosmos3.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
-            <figure class="ablation-card" data-cosmos-slot="cosmos25"><figcaption><span>Cosmos-Predict2.5</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="Cosmos-Predict2.5"><source src="videos/compare/failure-1-cosmos25.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
-            <figure class="ablation-card" data-cosmos-slot="tesseract"><figcaption><span>Tesseract</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="Tesseract"><source src="videos/compare/failure-1-tesseract.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
-            <figure class="ablation-card" data-cosmos-slot="kinema4d"><figcaption><span>Kinema4D</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="Kinema4D"><source src="videos/compare/failure-1-kinema4d.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="gt"><figcaption><span>GT</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="GT"><source src="videos/compare/failure-1-gt.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="hfwm"><figcaption><span>HF-WM</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="HF-WM"><source src="videos/compare/failure-1-hfwm.mp4?v=20260924sft50" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="oscar"><figcaption><span>OSCAR</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="OSCAR"><source src="videos/compare/failure-1-oscar.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="ctrlworld"><figcaption><span>Ctrl-World</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="Ctrl-World"><source src="videos/compare/failure-1-ctrlworld.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="cosmos3"><figcaption><span>cosmos3</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="cosmos3"><source src="videos/compare/failure-1-cosmos3.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="cosmos25"><figcaption><span>Cosmos-Predict2.5</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="Cosmos-Predict2.5"><source src="videos/compare/failure-1-cosmos25.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="tesseract"><figcaption><span>Tesseract</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="Tesseract"><source src="videos/compare/failure-1-tesseract.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+            <figure class="ablation-card" data-cosmos-slot="kinema4d"><figcaption><span>Kinema4D</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="Kinema4D"><source src="videos/compare/failure-1-kinema4d.mp4?v=20260923stretch" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
           </div>
         </div>
       </article>
     </section>
 
     <section class="section figures-section component-ablation-section" id="figures">
-      <div class="section-heading"><h2>03 · Ablation</h2></div>
+      <div class="section-heading"><h2>04 · Component ablations</h2></div>
       <article class="downstream-switcher ablation-switcher" data-component-ablation>
         <div class="model-tabs" role="tablist" aria-label="Component ablation selector">
           <button class="model-tab is-active" type="button" role="tab" aria-selected="true" data-case-name="w/o human data" data-with-label="with human data" data-without-label="w/o human data" data-note-kicker="Human data" data-note-title="Improves generalization" data-note-body="Human interactions add diverse contact dynamics that transfer to robot-centric prediction." data-video-gt="videos/ablation/1-gt.mp4?v=20260924droid16" data-video-with="videos/ablation/1-with.mp4?v=20260924droid16" data-video-without="videos/ablation/1-without.mp4?v=20260924droid16">w/o human data</button>
@@ -232,7 +246,7 @@
           <div class="ablation-controls"><button class="sync-play" type="button" data-ablation-play><span aria-hidden="true">▶</span>Play</button><button class="sync-secondary" type="button" data-ablation-reset>Reset</button></div>
           <div class="component-ablation-layout">
             <div class="component-ablation-gt-row">
-              <figure class="ablation-card" data-ab-slot="gt"><figcaption><span>GT</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="GT"><source src="videos/ablation/1-gt.mp4?v=20260924droid16" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+              <figure class="ablation-card" data-ab-slot="gt"><figcaption><span>GT</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="GT"><source src="videos/ablation/1-gt.mp4?v=20260924droid16" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
               <aside class="component-ablation-note">
                 <span data-ab-note-kicker>Human data</span>
                 <h4 data-ab-note-title>Improves generalization</h4>
@@ -240,23 +254,23 @@
               </aside>
             </div>
             <div class="component-ablation-pair">
-              <figure class="ablation-card" data-ab-slot="with"><figcaption><span data-ab-with-label>with human data</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="with human data"><source src="videos/ablation/1-with.mp4?v=20260924droid16" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
-              <figure class="ablation-card" data-ab-slot="without"><figcaption><span data-ab-without-label>w/o human data</span></figcaption><div class="video-shell"><video class="ablation-video" muted playsinline preload="metadata" aria-label="w/o human data"><source src="videos/ablation/1-without.mp4?v=20260924droid16" type="video/mp4"></video><svg class="sheep-box" viewBox="0 0 832 464" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect x="442" y="76" width="61" height="82" fill="none" stroke="#ef2020" stroke-width="4"></rect></svg><div class="ablation-placeholder" hidden></div></div></figure>
+              <figure class="ablation-card" data-ab-slot="with"><figcaption><span data-ab-with-label>with human data</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="with human data"><source src="videos/ablation/1-with.mp4?v=20260924droid16" type="video/mp4"></video><div class="ablation-placeholder" hidden></div></div></figure>
+              <figure class="ablation-card" data-ab-slot="without"><figcaption><span data-ab-without-label>w/o human data</span></figcaption><div class="video-shell"><video loop class="ablation-video" muted playsinline preload="metadata" aria-label="w/o human data"><source src="videos/ablation/1-without.mp4?v=20260924droid16" type="video/mp4"></video><svg class="sheep-box" viewBox="0 0 832 464" preserveAspectRatio="none" aria-hidden="true" focusable="false"><rect x="416" y="27" width="242" height="155" fill="none" stroke="#ef2020" stroke-width="8"></rect></svg><div class="ablation-placeholder" hidden></div></div></figure>
             </div>
           </div>
         </div>
       </article>
-      <article class="grpo-cases-block" id="grpo-cases">
-        <div class="grpo-cases-heading">
-          <div>
-            <span class="grpo-kicker">Failure-aware post-training</span>
-            <h3>GRPO cases</h3>
-            <p>Counterfactual actions expose failure dynamics; GRPO keeps the rollout that remains physically plausible.</p>
-          </div>
-        </div>
+    </section>
+
+    <section class="section grpo-section" id="grpo-cases">
+      <div class="section-heading"><h2>05 · Failure-aware post-training</h2></div>
+      <p class="section-intro">Counterfactual actions expose failure dynamics; GRPO keeps the rollout that remains physically plausible.</p>
+      <article class="grpo-cases-block">
         <div class="model-tabs grpo-case-tabs" role="tablist" aria-label="GRPO case selector">
           <button class="model-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="grpo-case-1" data-grpo-case="case1">Case 1 · Perturbed action</button>
           <button class="model-tab" type="button" role="tab" aria-selected="false" aria-controls="grpo-case-2" data-grpo-case="case2">Case 2 · No perturbation</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" aria-controls="grpo-case-3" data-grpo-case="case3">Case 3 · w/o action reward</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" aria-controls="grpo-case-4" data-grpo-case="case4">Case 4 · w/o physics reward</button>
         </div>
         <div class="grpo-case-stage">
           <section class="grpo-case-panel is-active" id="grpo-case-1" data-grpo-panel="case1" role="tabpanel">
@@ -264,45 +278,186 @@
               <div>
                 <span class="grpo-panel-kicker">Case 1 · failure-inducing action</span>
                 <h4>Before GRPO, the perturbed action breaks the physical outcome</h4>
-                <p>The original video is shown on the left; the perturbed action before GRPO is shown on the right. The rollout below shows GRPO selecting a physically plausible candidate.</p>
               </div>
             </div>
             <div class="grpo-pair-labels" aria-hidden="true"><span><i class="grpo-swatch grpo-swatch-good"></i>Initial video · origin reference</span><span><i class="grpo-swatch grpo-swatch-bad"></i>Before GRPO · perturbed action</span></div>
             <div class="grpo-pair">
-              <figure class="grpo-half-card"><div class="grpo-half-shell" data-grpo-half="right"><video class="grpo-pair-video" muted playsinline preload="metadata" aria-label="Case 1 initial origin reference video"><source src="videos/grpo/1-pair.mp4" type="video/mp4"></video></div></figure>
-              <figure class="grpo-half-card"><div class="grpo-half-shell" data-grpo-half="left"><video class="grpo-pair-video" muted playsinline preload="metadata" aria-label="Case 1 perturbed action before GRPO"><source src="videos/grpo/1-pair.mp4" type="video/mp4"></video></div></figure>
+              <figure class="grpo-half-card"><div class="grpo-half-shell" data-grpo-half="right"><video loop class="grpo-pair-video" muted playsinline preload="metadata" aria-label="Case 1 initial origin reference video"><source src="videos/grpo/1-pair.mp4" type="video/mp4"></video></div></figure>
+              <figure class="grpo-half-card"><div class="grpo-half-shell" data-grpo-half="left"><video loop class="grpo-pair-video" muted playsinline preload="metadata" aria-label="Case 1 perturbed action before GRPO"><source src="videos/grpo/1-pair.mp4" type="video/mp4"></video></div></figure>
             </div>
             <div class="grpo-process-heading"><div><span>GRPO process</span></div><div class="grpo-process-key"><i class="grpo-swatch grpo-swatch-selected"></i>selected <i class="grpo-swatch grpo-swatch-rejected"></i>rejected</div></div>
             <div class="grpo-process-card">
-              <div class="grpo-process-viewport grpo-process-viewport--case1"><video class="grpo-process-video" muted playsinline preload="metadata" aria-label="Case 1 GRPO candidate selection"><source src="videos/grpo/1-process.mp4" type="video/mp4"></video></div>
+              <div class="grpo-process-viewport grpo-process-viewport--case1">
+                <video loop class="grpo-process-video" muted playsinline preload="metadata" aria-label="Case 1 GRPO candidate selection"><source src="videos/grpo/1-process.mp4?v=20260927swap12" type="video/mp4"></video>
+                <div class="grpo-process-borders" aria-hidden="true">
+                  <span class="grpo-process-border grpo-process-border--green"></span>
+                  <span class="grpo-process-border grpo-process-border--red"></span>
+                  <span class="grpo-process-border grpo-process-border--red"></span>
+                  <span class="grpo-process-border grpo-process-border--red"></span>
+                </div>
+              </div>
               <div class="grpo-controls"><button class="sync-play" type="button" data-grpo-play="case1"><span aria-hidden="true">▶</span>Play case 1</button><button class="sync-secondary" type="button" data-grpo-reset="case1">Reset</button></div>
             </div>
           </section>
           <section class="grpo-case-panel" id="grpo-case-2" data-grpo-panel="case2" role="tabpanel" hidden>
             <div class="grpo-case-copy">
               <div>
-                <span class="grpo-panel-kicker">Origin</span>
+                <span class="grpo-panel-kicker">Case 2 · origin control</span>
                 <h4>No perturbation</h4>
                 <p>This control case keeps the original action unchanged.</p>
               </div>
               <span class="grpo-legend"><i class="grpo-swatch grpo-swatch-selected"></i>selected candidate <i class="grpo-swatch grpo-swatch-rejected"></i>other candidates</span>
             </div>
-            <div class="grpo-origin-label"><i class="grpo-swatch grpo-swatch-good"></i><span>Origin</span></div>
-            <figure class="grpo-origin-card"><div class="grpo-origin-viewport"><video class="grpo-origin-video" muted playsinline preload="metadata" aria-label="Case 2 origin video"><source src="videos/grpo/2-origin.mp4?v=20260924crop" type="video/mp4"></video></div></figure>
+            <div class="grpo-origin-row">
+              <div class="grpo-origin-media">
+                <div class="grpo-origin-label"><i class="grpo-swatch grpo-swatch-good"></i><span>Origin</span></div>
+                <figure class="grpo-origin-card"><div class="grpo-origin-viewport"><video loop class="grpo-origin-video" muted playsinline preload="metadata" aria-label="Case 2 origin video"><source src="videos/grpo/2-origin.mp4?v=20260924crop" type="video/mp4"></video></div></figure>
+              </div>
+              <aside class="component-ablation-note">
+                <span>Unperturbed cases</span>
+                <h4>Preserves multi-outcome modeling</h4>
+                <p>To keep modeling multiple outcomes during post-training, we retain a subset of unperturbed cases.</p>
+              </aside>
+            </div>
             <div class="grpo-process-heading"><div><span>GRPO candidate process · no perturbation</span></div></div>
             <div class="grpo-process-card">
-              <div class="grpo-process-viewport grpo-process-viewport--case2"><video class="grpo-process-video" muted playsinline preload="metadata" aria-label="Case 2 GRPO candidate selection without perturbation"><source src="videos/grpo/2-process.mp4" type="video/mp4"></video></div>
+              <div class="grpo-process-viewport grpo-process-viewport--case2">
+                <video loop class="grpo-process-video" muted playsinline preload="metadata" aria-label="Case 2 GRPO candidate selection without perturbation"><source src="videos/grpo/2-process.mp4?v=20260927origcrop" type="video/mp4"></video>
+                <div class="grpo-process-borders" aria-hidden="true">
+                  <span class="grpo-process-border grpo-process-border--red"></span>
+                  <span class="grpo-process-border grpo-process-border--red"></span>
+                  <span class="grpo-process-border grpo-process-border--green"></span>
+                  <span class="grpo-process-border grpo-process-border--red"></span>
+                </div>
+              </div>
               <div class="grpo-controls"><button class="sync-play" type="button" data-grpo-play="case2"><span aria-hidden="true">▶</span>Play case 2</button><button class="sync-secondary" type="button" data-grpo-reset="case2">Reset</button></div>
+            </div>
+          </section>
+          <section class="grpo-case-panel" id="grpo-case-3" data-grpo-panel="case3" role="tabpanel" hidden>
+            <div class="grpo-case-copy">
+              <div>
+                <span class="grpo-panel-kicker">Case 3 · physical plausibility only</span>
+                <h4>Without action alignment, motion can ignore the specified action</h4>
+                <p>Physics-only scoring prefers nearly static or physically valid scenes, even when the robot no longer follows the conditioning action.</p>
+              </div>
+              <span class="grpo-legend"><i class="grpo-swatch grpo-swatch-selected"></i>selected candidate <i class="grpo-swatch grpo-swatch-rejected"></i>other candidates</span>
+            </div>
+            <div class="grpo-origin-row">
+              <div class="grpo-origin-media">
+                <div class="grpo-origin-label"><i class="grpo-swatch grpo-swatch-good"></i><span>Origin</span></div>
+                <figure class="grpo-origin-card"><div class="grpo-origin-viewport grpo-origin-viewport--case3"><video loop class="grpo-origin-video" muted playsinline preload="metadata" aria-label="Case 3 origin video"><source src="videos/grpo/3-origin.mp4?v=20260926raw-cands" type="video/mp4"></video></div></figure>
+              </div>
+              <aside class="component-ablation-note grpo-reward-note">
+                <span>w/o action reward</span>
+                <h4>Plausible motion, weak action following</h4>
+                <p>Physical plausibility checks contact, support, and robot structure, not whether the rollout matches the commanded action. Without the alignment term, GRPO can keep a still or physically legal scene that contradicts the specified motion.</p>
+              </aside>
+            </div>
+            <div class="grpo-process-heading"><div><span>GRPO candidate process · physical reward only</span></div></div>
+            <div class="grpo-process-card">
+              <div class="grpo-process-viewport grpo-process-viewport--case3">
+                <video loop class="grpo-process-video" muted playsinline preload="metadata" aria-label="Case 3 GRPO candidates with physical reward only"><source src="videos/grpo/3-process.mp4?v=20260926raw-cands" type="video/mp4"></video>
+                <div class="grpo-process-borders" aria-hidden="true">
+                  <span class="grpo-process-border grpo-process-border--red"></span>
+                  <span class="grpo-process-border grpo-process-border--red"></span>
+                  <span class="grpo-process-border grpo-process-border--red"></span>
+                  <span class="grpo-process-border grpo-process-border--red"></span>
+                </div>
+              </div>
+              <div class="grpo-controls"><button class="sync-play" type="button" data-grpo-play="case3"><span aria-hidden="true">▶</span>Play case 3</button><button class="sync-secondary" type="button" data-grpo-reset="case3">Reset</button></div>
+            </div>
+          </section>
+          <section class="grpo-case-panel" id="grpo-case-4" data-grpo-panel="case4" role="tabpanel" hidden>
+            <div class="grpo-case-copy">
+              <div>
+                <span class="grpo-panel-kicker">Case 4 · action alignment only</span>
+                <h4>Without physics, action-consistent motion can still look implausible</h4>
+                <p>Alignment-only scoring keeps the robot consistent with the action, but background flicker and broken contact dynamics remain.</p>
+              </div>
+              <span class="grpo-legend"><i class="grpo-swatch grpo-swatch-selected"></i>selected candidate <i class="grpo-swatch grpo-swatch-rejected"></i>other candidates</span>
+            </div>
+            <div class="grpo-origin-row">
+              <div class="grpo-origin-media">
+                <div class="grpo-origin-label"><i class="grpo-swatch grpo-swatch-good"></i><span>Origin</span></div>
+                <figure class="grpo-origin-card"><div class="grpo-origin-viewport grpo-origin-viewport--case4"><video loop class="grpo-origin-video" muted playsinline preload="metadata" aria-label="Case 4 origin video"><source src="videos/grpo/4-origin.mp4?v=20260926raw-cands" type="video/mp4"></video></div></figure>
+              </div>
+              <aside class="component-ablation-note grpo-reward-note">
+                <span>w/o physics reward</span>
+                <h4>Action following, weaker physical coherence</h4>
+                <p>The alignment scorer ranks how well generated motion matches the action skeleton. Without physical checks, GRPO can select an action-faithful rollout that still shows implausible contacts or unstable backgrounds.</p>
+              </aside>
+            </div>
+            <div class="grpo-process-heading"><div><span>GRPO candidate process · action reward only</span></div></div>
+            <div class="grpo-process-card">
+              <div class="grpo-process-viewport grpo-process-viewport--case4">
+                <video loop class="grpo-process-video" muted playsinline preload="metadata" aria-label="Case 4 GRPO candidates with action reward only"><source src="videos/grpo/4-process.mp4?v=20260926raw-cands" type="video/mp4"></video>
+                <div class="grpo-process-borders" aria-hidden="true">
+                  <span class="grpo-process-border grpo-process-border--red"></span>
+                  <span class="grpo-process-border grpo-process-border--red"></span>
+                  <span class="grpo-process-border grpo-process-border--red"></span>
+                  <span class="grpo-process-border grpo-process-border--red"></span>
+                </div>
+              </div>
+              <div class="grpo-controls"><button class="sync-play" type="button" data-grpo-play="case4"><span aria-hidden="true">▶</span>Play case 4</button><button class="sync-secondary" type="button" data-grpo-reset="case4">Reset</button></div>
             </div>
           </section>
         </div>
       </article>
+
+      <!--
+      <article class="action-reward-block" id="action-reward" data-action-reward>
+        <div class="action-reward-heading">
+          <div>
+            <span class="grpo-panel-kicker">Action alignment reward</span>
+            <h3>Same video, different action skeletons</h3>
+            <p>Each pair keeps the RGB clip fixed and changes only the conditioning action. Higher alignment overlays the original skeleton; lower alignment overlays a perturbed action. Full-frame views capture overall robot pose, while local crops focus on the wrist and gripper.</p>
+          </div>
+        </div>
+        <div class="model-tabs action-reward-tabs" role="tablist" aria-label="Action alignment case selector">
+          <button class="model-tab is-active" type="button" role="tab" aria-selected="true" data-case-name="Arm pose · mild offset" data-high-full="videos/action-reward/c02-high-full.mp4?v=20260926skip0" data-low-full="videos/action-reward/c02-low-full.mp4?v=20260926skip0" data-high-local="videos/action-reward/c02-high-local.mp4?v=20260926skip0" data-low-local="videos/action-reward/c02-low-local.mp4?v=20260926skip0" data-high-full-poster="videos/action-reward/posters/c02-high-full.jpg" data-low-full-poster="videos/action-reward/posters/c02-low-full.jpg" data-high-local-poster="videos/action-reward/posters/c02-high-local.jpg" data-low-local-poster="videos/action-reward/posters/c02-low-local.jpg">Case 1 · Arm pose</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-case-name="Wrist rotation" data-high-full="videos/action-reward/c41-high-full.mp4?v=20260926skip0" data-low-full="videos/action-reward/c41-low-full.mp4?v=20260926skip0" data-high-local="videos/action-reward/c41-high-local.mp4?v=20260926skip0" data-low-local="videos/action-reward/c41-low-local.mp4?v=20260926skip0" data-high-full-poster="videos/action-reward/posters/c41-high-full.jpg" data-low-full-poster="videos/action-reward/posters/c41-low-full.jpg" data-high-local-poster="videos/action-reward/posters/c41-high-local.jpg" data-low-local-poster="videos/action-reward/posters/c41-low-local.jpg">Case 2 · Wrist rotation</button>
+          <button class="model-tab" type="button" role="tab" aria-selected="false" data-case-name="Arm pose · larger offset" data-high-full="videos/action-reward/c86-high-full.mp4?v=20260926skip0" data-low-full="videos/action-reward/c86-low-full.mp4?v=20260926skip0" data-high-local="videos/action-reward/c86-high-local.mp4?v=20260926skip0" data-low-local="videos/action-reward/c86-low-local.mp4?v=20260926skip0" data-high-full-poster="videos/action-reward/posters/c86-high-full.jpg" data-low-full-poster="videos/action-reward/posters/c86-low-full.jpg" data-high-local-poster="videos/action-reward/posters/c86-high-local.jpg" data-low-local-poster="videos/action-reward/posters/c86-low-local.jpg">Case 3 · Arm pose</button>
+        </div>
+        <div class="action-reward-stage">
+          <div class="action-reward-stage-header">
+            <h4 data-action-reward-title>Arm pose · mild offset</h4>
+            <div class="action-reward-controls">
+              <button class="sync-play" type="button" data-action-reward-play><span aria-hidden="true">▶</span>Play</button>
+              <button class="sync-secondary" type="button" data-action-reward-reset>Reset</button>
+            </div>
+          </div>
+          <div class="action-reward-col-labels" aria-hidden="true"><span>Higher alignment</span><span>Lower alignment</span></div>
+          <div class="action-reward-grid">
+            <div class="action-reward-col">
+              <figure class="action-reward-card">
+                <figcaption>Full</figcaption>
+                <div class="action-reward-shell action-reward-shell--full"><video class="action-reward-video" data-ar-slot="high-full" muted playsinline loop preload="metadata" poster="videos/action-reward/posters/c02-high-full.jpg" aria-label="Higher-alignment full-frame overlay"><source src="videos/action-reward/c02-high-full.mp4?v=20260926skip0" type="video/mp4"></video></div>
+              </figure>
+              <figure class="action-reward-card">
+                <figcaption>Local</figcaption>
+                <div class="action-reward-shell action-reward-shell--local"><video class="action-reward-video" data-ar-slot="high-local" muted playsinline loop preload="metadata" poster="videos/action-reward/posters/c02-high-local.jpg" aria-label="Higher-alignment end-effector crop"><source src="videos/action-reward/c02-high-local.mp4?v=20260926skip0" type="video/mp4"></video></div>
+              </figure>
+            </div>
+            <div class="action-reward-col">
+              <figure class="action-reward-card">
+                <figcaption>Full</figcaption>
+                <div class="action-reward-shell action-reward-shell--full"><video class="action-reward-video" data-ar-slot="low-full" muted playsinline loop preload="metadata" poster="videos/action-reward/posters/c02-low-full.jpg" aria-label="Lower-alignment full-frame overlay"><source src="videos/action-reward/c02-low-full.mp4?v=20260926skip0" type="video/mp4"></video></div>
+              </figure>
+              <figure class="action-reward-card">
+                <figcaption>Local</figcaption>
+                <div class="action-reward-shell action-reward-shell--local"><video class="action-reward-video" data-ar-slot="low-local" muted playsinline loop preload="metadata" poster="videos/action-reward/posters/c02-low-local.jpg" aria-label="Lower-alignment end-effector crop"><source src="videos/action-reward/c02-low-local.mp4?v=20260926skip0" type="video/mp4"></video></div>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </article>
+      -->
     </section>
 
 
     <section class="section destutter-section" id="destutter">
-      <div class="section-heading"><h2>03 · Stabilized pointflow</h2></div>
-      <figure class="paper-figure paper-figure-wide destutter-figure"><img src="figures/destutter-1.png" alt="HF-WM Figure 2: camera-compensated 3D point trajectories on the left, and the dual-branch multimodal attention architecture on the right" loading="lazy"><figcaption><span>Figure 2</span><strong>Stabilized point flow and multimodal attention.</strong><p>Left: camera-compensated 3D pointflow tracks object and gripper motion. Right: multimodal attention fuses vision, language, skeleton, action, and point-flow tokens for unified human–robot modeling.</p></figcaption></figure>
+      <div class="section-heading"><h2>06 · Stabilized pointflow</h2></div>
+      <figure class="paper-figure paper-figure-wide destutter-figure"><img src="figures/destutter-1.png?v=20260926pptx" alt="HF-WM: camera-compensated 3D point trajectories on the left, and the dual-branch multimodal attention architecture on the right" loading="lazy"><figcaption><strong>Stabilized point flow and multimodal attention.</strong><p>Left: camera-compensated 3D pointflow tracks object and gripper motion. Right: multimodal attention fuses vision, language, skeleton, action, and point-flow tokens for unified human–robot modeling.</p></figcaption></figure>
       <article class="destutter-switcher" data-destutter>
         <div class="model-tabs" role="tablist" aria-label="Pointflow destutter case selector">
           <button class="model-tab is-active" type="button" role="tab" aria-selected="true" data-case-name="Case 1" data-metric="5.31 → 1.04 pixels / frame (−80%)" data-before-src="videos/destutter/1-before.mp4" data-after-src="videos/destutter/1-after.mp4" data-before-poster="videos/destutter/1-before.jpg" data-after-poster="videos/destutter/1-after.jpg">Case 1</button>
@@ -409,6 +564,7 @@
       resetButton.addEventListener('click', () => syncTo(0));
       speedControl.addEventListener('change', () => videos.forEach((video) => { video.playbackRate = Number(speedControl.value); }));
       range.addEventListener('input', () => syncTo(Number(range.value)));
+      void playAll(0);
     })();
     (() => {
       document.querySelectorAll('.gallery-triptych-labels span:first-child').forEach((label) => { label.textContent = 'Input action skeleton'; });
@@ -421,16 +577,43 @@
         const title = switcher.querySelector('[data-model-title]');
         const instruction = switcher.querySelector('.model-stage-header [data-model-instruction]');
         const speedControl = switcher.querySelector('[data-model-speed]');
+        const playButton = switcher.querySelector('[data-model-play]');
+        const resetButton = switcher.querySelector('[data-model-reset]');
         if (!video || !source || !tabs.length) return;
         const currentSpeed = () => Number(speedControl?.value || 1);
         video.playbackRate = currentSpeed();
         speedControl?.addEventListener('change', () => { video.playbackRate = currentSpeed(); });
         const stage = switcher.querySelector('.downstream-extra-stage');
-        const speedWrap = speedControl?.closest('.model-speed-control');
+        const actionsWrap = switcher.querySelector('.model-stage-actions');
         const showChart = (tab) => tab.dataset.view === 'chart';
+        const setPlayButton = () => {
+          if (!playButton) return;
+          playButton.innerHTML = video.paused
+            ? '<span aria-hidden="true">▶</span>Play'
+            : '<span aria-hidden="true">Ⅱ</span>Pause';
+        };
+        const playVideo = async () => {
+          video.playbackRate = currentSpeed();
+          await video.play().catch(() => {});
+          setPlayButton();
+        };
+        const pauseVideo = () => {
+          video.pause();
+          setPlayButton();
+        };
+        const resetVideo = () => {
+          video.pause();
+          video.currentTime = 0;
+          setPlayButton();
+        };
+        video.muted = true;
+        video.addEventListener('play', setPlayButton);
+        video.addEventListener('pause', setPlayButton);
+        video.addEventListener('ended', setPlayButton);
+        playButton?.addEventListener('click', () => video.paused ? void playVideo() : pauseVideo());
+        resetButton?.addEventListener('click', resetVideo);
         const activate = (tab) => {
           const chart = showChart(tab);
-          const wasPlaying = !video.paused;
           const currentTime = Number.isFinite(video.currentTime) ? video.currentTime : 0;
           tabs.forEach((button) => {
             const active = button === tab;
@@ -443,21 +626,23 @@
             instruction.textContent = tab.dataset.modelInstruction || '';
           }
           if (stage) stage.classList.toggle('is-chart', chart);
-          speedWrap?.classList.toggle('is-hidden', chart);
+          actionsWrap?.classList.toggle('is-hidden', chart);
           if (chart) {
-            video.pause();
+            pauseVideo();
             return;
           }
           video.setAttribute('aria-label', `${tab.dataset.modelName || 'Model'} real and HF-WM comparison`);
           video.addEventListener('loadedmetadata', () => {
             video.playbackRate = currentSpeed();
             if (Number.isFinite(video.duration) && video.duration > 0) video.currentTime = Math.min(currentTime, video.duration);
-            if (wasPlaying) void video.play().catch(() => {});
+            void playVideo();
           }, { once: true });
           source.src = tab.dataset.videoSrc || '';
           video.load();
         };
         tabs.forEach((tab) => tab.addEventListener('click', () => activate(tab)));
+        const initial = tabs.find((tab) => tab.classList.contains('is-active')) || tabs[0];
+        if (initial && !showChart(initial)) void playVideo();
       });
       document.querySelectorAll('[data-cosmos-switcher]').forEach((switcher) => {
         const tabs = Array.from(switcher.querySelectorAll('.model-tab'));
@@ -547,7 +732,6 @@
           lockRate(video);
         };
         const activate = (tab) => {
-          const wasPlaying = playing;
           pauseGroup();
           tabs.forEach((button) => {
             const active = button === tab;
@@ -563,10 +747,9 @@
           });
           duration = 0;
           setStatus();
-          if (wasPlaying) {
-            const first = activeVideos()[0];
-            if (first) first.addEventListener('loadedmetadata', () => { void playGroup(); }, { once: true });
-          }
+          const first = activeVideos()[0];
+          if (first) first.addEventListener('loadedmetadata', () => { void playGroup(); }, { once: true });
+          else void playGroup();
         };
         allVideos().forEach((video) => {
           lockRate(video);
@@ -590,6 +773,7 @@
         if (initial?.dataset.slotOrder) reorderSlots(initial.dataset.slotOrder);
         playButton.addEventListener('click', () => playing ? pauseGroup() : void playGroup());
         resetButton.addEventListener('click', () => { syncTo(0); if (playing) pauseGroup(); });
+        void playGroup();
       });
       document.querySelectorAll('[data-component-ablation]').forEach((switcher) => {
         const tabs = Array.from(switcher.querySelectorAll('.model-tab'));
@@ -661,7 +845,6 @@
           lockRate(video);
         };
         const activate = (tab) => {
-          const wasPlaying = playing;
           pauseGroup();
           tabs.forEach((button) => {
             const active = button === tab;
@@ -684,10 +867,9 @@
             applySlot(card, tab.dataset[srcKeys[slot]] || '');
           });
           duration = 0;
-          if (wasPlaying) {
-            const first = activeVideos()[0];
-            if (first) first.addEventListener('loadedmetadata', () => { void playGroup(); }, { once: true });
-          }
+          const first = activeVideos()[0];
+          if (first) first.addEventListener('loadedmetadata', () => { void playGroup(); }, { once: true });
+          else void playGroup();
         };
         allVideos().forEach((video) => {
           lockRate(video);
@@ -710,6 +892,7 @@
         setSheepBoxVisibility(tabs.find((tab) => tab.classList.contains('is-active')) || tabs[0]);
         playButton.addEventListener('click', () => playing ? pauseGroup() : void playGroup());
         resetButton.addEventListener('click', () => { syncTo(0); if (playing) pauseGroup(); });
+        void playGroup();
       });
     })();
   </script>
@@ -767,6 +950,9 @@
           if (metric) metric.textContent = tab.dataset.metric || '';
           loadSide(before, tab.dataset.beforeSrc, tab.dataset.beforePoster);
           loadSide(after, tab.dataset.afterSrc, tab.dataset.afterPoster);
+          const first = videos[0];
+          if (first) first.addEventListener('loadedmetadata', () => { void playPair(); }, { once: true });
+          else void playPair();
         };
         videos.forEach((video) => {
           video.addEventListener('timeupdate', () => {
@@ -778,7 +964,88 @@
         });
         tabs.forEach((tab) => tab.addEventListener('click', () => activate(tab)));
         playButton?.addEventListener('click', () => playing ? pausePair() : void playPair());
+        void playPair();
       });
+    })();
+  </script>
+  <script>
+    (() => {
+      const root = document.getElementById('ttc-comparisons');
+      if (!root) return;
+      const videos = Array.from(root.querySelectorAll('.ttc-video'));
+      const playButton = root.querySelector('[data-ttc-play]');
+      const resetButton = root.querySelector('[data-ttc-reset]');
+      if (!videos.length || !playButton) return;
+      let playing = false;
+      const setButton = () => {
+        playButton.innerHTML = playing
+          ? '<span aria-hidden="true">Ⅱ</span>Pause'
+          : '<span aria-hidden="true">▶</span>Play';
+      };
+      const pauseAll = () => {
+        videos.forEach((video) => video.pause());
+        playing = false;
+        setButton();
+      };
+      const waitForReady = (video) => new Promise((resolve) => {
+        if (video.readyState >= 2) {
+          resolve();
+          return;
+        }
+        const done = () => {
+          video.removeEventListener('canplay', done);
+          video.removeEventListener('loadeddata', done);
+          window.clearTimeout(timer);
+          resolve();
+        };
+        const timer = window.setTimeout(done, 2500);
+        video.addEventListener('canplay', done, { once: true });
+        video.addEventListener('loadeddata', done, { once: true });
+        video.load();
+      });
+      const playAll = async () => {
+        videos.forEach((video) => { video.muted = true; });
+        await Promise.allSettled(videos.map(async (video) => {
+          await waitForReady(video);
+          await video.play().catch(() => {});
+        }));
+        playing = videos.some((video) => !video.paused);
+        setButton();
+      };
+      const resetAll = () => {
+        videos.forEach((video) => {
+          video.pause();
+          video.currentTime = 0;
+        });
+        playing = false;
+        setButton();
+      };
+      videos.forEach((video) => {
+        video.addEventListener('play', () => {
+          playing = true;
+          setButton();
+        });
+        video.addEventListener('pause', () => {
+          if (videos.every((item) => item.paused)) {
+            playing = false;
+            setButton();
+          }
+        });
+        video.addEventListener('ended', () => {
+          if (!playing) return;
+          video.currentTime = 0;
+          void video.play().catch(() => {});
+        });
+        video.addEventListener('timeupdate', () => {
+          if (video !== videos[0] || !playing) return;
+          videos.slice(1).forEach((other) => {
+            if (Math.abs(other.currentTime - video.currentTime) > 0.08) other.currentTime = video.currentTime;
+          });
+        });
+      });
+      playButton.addEventListener('click', () => playing ? pauseAll() : void playAll());
+      resetButton?.addEventListener('click', resetAll);
+      void playAll();
     })();
   </script>
   <script>
@@ -826,6 +1093,7 @@
           video.currentTime = Math.min(initialVideoTime, Math.max(0, duration - 0.01));
         });
       };
+      const rateFor = (name) => name === 'case3' ? 0.5 : 1;
       const playCase = async (name) => {
         const panel = panelFor(name);
         const videos = videosFor(panel);
@@ -834,7 +1102,10 @@
         const pair = pairVideosFor(panel);
         const pairTime = Number.isFinite(pair[0]?.currentTime) ? pair[0].currentTime : 0;
         pair.forEach((video) => { video.currentTime = pairTime; });
+        const rate = rateFor(name);
+        videos.forEach((video) => { video.playbackRate = rate; });
         await Promise.allSettled(videos.map((video) => video.play()));
+        videos.forEach((video) => { video.playbackRate = rate; });
         playingCase = name;
         setButtonState(name, true);
       };
@@ -853,6 +1124,7 @@
           panel.classList.toggle('is-active', selected);
         });
         activeCase = name;
+        void playCase(name);
       };
 
       tabs.forEach((tab) => tab.addEventListener('click', () => activate(tab)));
@@ -888,11 +1160,133 @@
             void video.play().catch(() => {});
           });
         });
-        videosFor(panel).forEach(primeVideo);
+        videosFor(panel).forEach((video) => {
+          primeVideo(video);
+          video.playbackRate = rateFor(panel.dataset.grpoPanel);
+        });
       });
       panels.forEach((panel) => { panel.hidden = panel.dataset.grpoPanel !== activeCase; });
       tabs.forEach((tab) => { tab.setAttribute('aria-selected', String(tab.dataset.grpoCase === activeCase)); });
       tabs.forEach((tab) => setButtonState(tab.dataset.grpoCase, false));
+      void playCase(activeCase);
+    })();
+  </script>
+  <!--
+  <script>
+    (() => {
+      document.querySelectorAll('[data-action-reward]').forEach((root) => {
+        const tabs = Array.from(root.querySelectorAll('[data-case-name]'));
+        const title = root.querySelector('[data-action-reward-title]');
+        const playButton = root.querySelector('[data-action-reward-play]');
+        const resetButton = root.querySelector('[data-action-reward-reset]');
+        const videos = {
+          'high-full': root.querySelector('[data-ar-slot="high-full"]'),
+          'low-full': root.querySelector('[data-ar-slot="low-full"]'),
+          'high-local': root.querySelector('[data-ar-slot="high-local"]'),
+          'low-local': root.querySelector('[data-ar-slot="low-local"]'),
+        };
+        const srcKeys = {
+          'high-full': 'highFull',
+          'low-full': 'lowFull',
+          'high-local': 'highLocal',
+          'low-local': 'lowLocal',
+        };
+        const posterKeys = {
+          'high-full': 'highFullPoster',
+          'low-full': 'lowFullPoster',
+          'high-local': 'highLocalPoster',
+          'low-local': 'lowLocalPoster',
+        };
+        const allVideos = () => Object.values(videos).filter(Boolean);
+        let playing = false;
+        const setButton = () => {
+          if (!playButton) return;
+          playButton.innerHTML = playing
+            ? '<span aria-hidden="true">Ⅱ</span>Pause'
+            : '<span aria-hidden="true">▶</span>Play';
+        };
+        const pauseAll = () => {
+          allVideos().forEach((video) => video.pause());
+          playing = false;
+          setButton();
+        };
+        const playAll = async () => {
+          const time = allVideos()[0]?.currentTime || 0;
+          allVideos().forEach((video) => { video.currentTime = time; });
+          await Promise.allSettled(allVideos().map((video) => video.play()));
+          playing = true;
+          setButton();
+        };
+        const loadSlot = (slot, src, poster) => {
+          const video = videos[slot];
+          if (!video || !src) return;
+          video.pause();
+          video.poster = poster || '';
+          video.querySelectorAll('source').forEach((source) => source.remove());
+          const source = document.createElement('source');
+          source.src = src;
+          source.type = 'video/mp4';
+          video.appendChild(source);
+          video.load();
+        };
+        const activate = (tab) => {
+          pauseAll();
+          tabs.forEach((button) => {
+            const active = button === tab;
+            button.classList.toggle('is-active', active);
+            button.setAttribute('aria-selected', String(active));
+          });
+          if (title) title.textContent = tab.dataset.caseName || '';
+          Object.keys(videos).forEach((slot) => {
+            loadSlot(slot, tab.dataset[srcKeys[slot]] || '', tab.dataset[posterKeys[slot]] || '');
+          });
+          const first = allVideos()[0];
+          if (first) first.addEventListener('loadedmetadata', () => { void playAll(); }, { once: true });
+          else void playAll();
+        };
+        allVideos().forEach((video) => {
+          video.addEventListener('timeupdate', () => {
+            if (video !== allVideos()[0] || !playing) return;
+            allVideos().slice(1).forEach((other) => {
+              if (Math.abs(other.currentTime - video.currentTime) > 0.08) other.currentTime = video.currentTime;
+            });
+          });
+        });
+        tabs.forEach((tab) => tab.addEventListener('click', () => activate(tab)));
+        playButton?.addEventListener('click', () => playing ? pauseAll() : void playAll());
+        resetButton?.addEventListener('click', () => {
+          allVideos().forEach((video) => { video.currentTime = 0; });
+          if (playing) pauseAll();
+        });
+        void playAll();
+      });
+    })();
+  </script>
+  -->
+
+  <script>
+    (() => {
+      const enableLoop = (video) => {
+        video.loop = true;
+        video.muted = true;
+        video.addEventListener('ended', () => {
+          if (video.paused) {
+            video.currentTime = 0;
+            void video.play().catch(() => {});
+          }
+        });
+      };
+      document.querySelectorAll('video').forEach(enableLoop);
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType !== 1) return;
+            if (node.matches?.('video')) enableLoop(node);
+            node.querySelectorAll?.('video').forEach(enableLoop);
+          });
+        });
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
     })();
   </script>
 </body>
