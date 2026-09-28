@@ -25,7 +25,7 @@
 
     <nav class="section-nav" aria-label="Page sections">
       <div><div class="nav-links">
-        <a href="#teaser">Teaser</a><a href="#abstract">Abstract</a><a href="#gallery">Gallery</a><a href="#downstream">Downstream</a><a href="#ablation">Baselines</a><a href="#figures">Ablations</a><a href="#grpo-cases">GRPO cases</a><!-- <a href="#action-reward">Action reward</a> --><a href="#destutter">Pointflow</a>
+        <a href="#teaser">Teaser</a><a href="#abstract">Abstract</a><a href="#gallery">Gallery</a><a href="#downstream">Downstream</a><a href="#ablation">Comparison</a><a href="#figures">Ablations</a><a href="#grpo-cases">GRPO cases</a><!-- <a href="#action-reward">Action reward</a> --><a href="#destutter">Pointflow</a>
       </div></div>
     </nav>
 
@@ -182,6 +182,7 @@
         <div class="ttc-controls">
           <button class="sync-play" type="button" data-ttc-play><span aria-hidden="true">▶</span>Play</button>
           <button class="sync-secondary" type="button" data-ttc-reset>Reset</button>
+          <label class="model-speed-control"><span>Speed</span><select data-ttc-speed aria-label="Playback speed"><option value="0.5">0.5×</option><option value="0.75">0.75×</option><option value="1">1×</option><option value="1.5">1.5×</option><option value="2" selected>2×</option><option value="3">3×</option></select></label>
         </div>
       </div>
     </section>
@@ -975,8 +976,14 @@
       const videos = Array.from(root.querySelectorAll('.ttc-video'));
       const playButton = root.querySelector('[data-ttc-play]');
       const resetButton = root.querySelector('[data-ttc-reset]');
+      const speedControl = root.querySelector('[data-ttc-speed]');
       if (!videos.length || !playButton) return;
       let playing = false;
+      const currentSpeed = () => Number(speedControl?.value || 2);
+      const applySpeed = () => {
+        const rate = currentSpeed();
+        videos.forEach((video) => { video.playbackRate = rate; });
+      };
       const setButton = () => {
         playButton.innerHTML = playing
           ? '<span aria-hidden="true">Ⅱ</span>Pause'
@@ -1005,9 +1012,12 @@
       });
       const playAll = async () => {
         videos.forEach((video) => { video.muted = true; });
+        applySpeed();
         await Promise.allSettled(videos.map(async (video) => {
           await waitForReady(video);
+          video.playbackRate = currentSpeed();
           await video.play().catch(() => {});
+          video.playbackRate = currentSpeed();
         }));
         playing = videos.some((video) => !video.paused);
         setButton();
@@ -1021,7 +1031,11 @@
         setButton();
       };
       videos.forEach((video) => {
+        video.loop = true;
+        video.playbackRate = currentSpeed();
+        video.addEventListener('loadedmetadata', applySpeed);
         video.addEventListener('play', () => {
+          video.playbackRate = currentSpeed();
           playing = true;
           setButton();
         });
@@ -1034,17 +1048,14 @@
         video.addEventListener('ended', () => {
           if (!playing) return;
           video.currentTime = 0;
+          video.playbackRate = currentSpeed();
           void video.play().catch(() => {});
         });
-        video.addEventListener('timeupdate', () => {
-          if (video !== videos[0] || !playing) return;
-          videos.slice(1).forEach((other) => {
-            if (Math.abs(other.currentTime - video.currentTime) > 0.08) other.currentTime = video.currentTime;
-          });
-        });
       });
+      speedControl?.addEventListener('change', applySpeed);
       playButton.addEventListener('click', () => playing ? pauseAll() : void playAll());
       resetButton?.addEventListener('click', resetAll);
+      applySpeed();
       void playAll();
     })();
   </script>

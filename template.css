@@ -213,6 +213,7 @@ span.model-tab { cursor: default; }
 .ttc-controls { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: 1rem; }
 .ttc-controls .sync-play,
 .ttc-controls .sync-secondary { min-height: 34px; border-radius: 8px; font-size: .74rem; font-weight: 700; }
+.ttc-controls .model-speed-control { margin-left: .15rem; }
 .ttc-card { min-width: 0; margin: 0; padding: 1rem; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,.84); }
 .ttc-card figcaption { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: .5rem 1rem; min-height: 0; margin-bottom: .7rem; }
 .ttc-card figcaption > div { display: flex; min-width: 0; align-items: baseline; gap: .55rem; }
